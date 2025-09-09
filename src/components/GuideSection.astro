@@ -14,8 +14,8 @@ import regisImage from '../assets/images/regis.png';
 
   <div class="relative z-10 container mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <!-- Photo section without any container -->
-      <div class="animate-slide-left">
+      <!-- Photo section with intro badge -->
+      <div class="animate-slide-left relative pb-14">
         <Image 
           src={regisImage} 
           alt="Régis ROLNIN, Expert en croissance PME et créateur de la Méthode AIA™"
@@ -25,6 +25,19 @@ import regisImage from '../assets/images/regis.png';
           height="1000"
           quality={95}
         />
+
+        <!-- Intro badge (glass) -->
+        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2">
+          <span
+            class="glass inline-flex items-center gap-2 px-6 py-3 rounded-full text-white/95 border border-white/20 shadow-xl"
+            aria-label="Bonjour, je suis Régis."
+          >
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span class="font-semibold">Bonjour, je suis <span class="text-amber-300">Régis</span>.</span>
+          </span>
+        </div>
       </div>
 
       <!-- Premium glassmorphism content section -->
@@ -44,11 +57,11 @@ import regisImage from '../assets/images/regis.png';
 
           <div class="space-y-8 text-xl text-gray-300 font-crimson mb-10">
             <p class="leading-relaxed font-crimson">
-            Entre pression administrative, gestion des équipes et des locaux, faire croître votre activité devient vite une source de charge mentale continue — et de journées à rallonge.
+              Entre pression administrative, gestion des équipes et des locaux, faire croître votre activité devient vite une source de charge mentale continue — et de journées à rallonge.
             </p>
             
             <p class="leading-relaxed font-crimson">
-              C’est parce que j’ai vécu ces mêmes frustrations que j’ai conçu la Méthode AIA™ : Un cadre simple et structurant, pour vous aider à reprendre la main sur le développement de votre activité — marketing, et opérationnel — sans complexité inutile.
+              C’est parce que j’ai vécu ces mêmes frustrations que j’ai conçu la Méthode AIA™ : un cadre simple et structurant, pour vous aider à reprendre la main sur le développement de votre activité — marketing et opérationnel — sans complexité inutile.
             </p>
 
             <!-- Premium trust indicator with glassmorphism -->
@@ -83,7 +96,7 @@ import regisImage from '../assets/images/regis.png';
               href="/a-propos"
               class="inline-flex items-center px-8 py-4 cta-secondary-dark text-white font-semibold rounded-full hover-lift transition-all duration-300 text-lg"
             >
-              Qui suis-je?
+              Qui suis-je ?
               <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
               </svg>
