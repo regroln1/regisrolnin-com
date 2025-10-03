@@ -316,7 +316,7 @@ const jsonLd = {
     const article = document.querySelector('article');
     const progressBar = document.querySelector('#reading-progress div');
     
-    if (!article || !progressBar) return;
+    if (!article || !progressBar || !(progressBar instanceof HTMLElement)) return;
     
     const articleTop = article.offsetTop;
     const articleHeight = article.offsetHeight;

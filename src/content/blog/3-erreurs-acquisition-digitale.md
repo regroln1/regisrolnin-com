@@ -1,6 +1,6 @@
 ---
 title: "Les 3 erreurs qui tuent votre acquisition digitale"
-description: "Découvrez les pièges les plus courants qui sabotent vos efforts marketing et comment les éviter pour maximiser vos conversions."
+description: "Découvrez les pièges les plus courants qui sabotent vos efforts marketing et comment les éviter pour maximiser vos conversions et réduire vos coûts."
 pubDate: 2024-12-10
 tags: ["Marketing", "Acquisition", "Conversion"]
 author: "Regis Rolnin"
