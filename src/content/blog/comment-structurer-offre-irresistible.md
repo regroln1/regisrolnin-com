@@ -1,6 +1,6 @@
 ---
 title: "Comment structurer une offre irrésistible ?"
-description: "Découvrez les 5 piliers d'une proposition de valeur qui convertit et fidélise vos prospects en clients durables."
+description: "Découvrez les pièges les plus courants qui sabotent vos efforts marketing et comment les éviter pour maximiser vos conversions et réduire vos coûts."
 pubDate: 2024-12-15
 tags: ["Stratégie", "Offre", "Conversion"]
 author: "Regis Rolnin"

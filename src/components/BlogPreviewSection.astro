@@ -1,6 +1,6 @@
 ---
 import { getLatestPosts, formatDate, getReadingTime } from '../utils/blog';
-import type { BlogPost } from '../types'; // ✅ Corrigé : import depuis types.ts
+import type { BlogPost } from '../types/blog'; // ✅ Corrigé : import depuis types.ts
 
 const latestPosts: BlogPost[] = await getLatestPosts(3);
 ---

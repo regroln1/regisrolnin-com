@@ -14,8 +14,8 @@ import regisImage from '../assets/images/regis.png';
 
   <div class="relative z-10 container mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <!-- Photo section without any container -->
-      <div class="animate-slide-left">
+      <!-- Photo section with intro badge -->
+      <div class="animate-slide-left relative pb-14">
         <Image 
           src={regisImage} 
           alt="Régis ROLNIN, Expert en croissance PME et créateur de la Méthode AIA™"
@@ -25,6 +25,19 @@ import regisImage from '../assets/images/regis.png';
           height="1000"
           quality={95}
         />
+
+        <!-- Intro badge (glass) -->
+        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2">
+          <span
+            class="glass inline-flex items-center gap-2 px-6 py-3 rounded-full text-white/95 border border-white/20 shadow-xl"
+            aria-label="Bonjour, je suis Régis."
+          >
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span class="font-semibold">Bonjour, je suis <span class="text-amber-300">Régis</span>.</span>
+          </span>
+        </div>
       </div>
 
       <!-- Premium glassmorphism content section -->
@@ -42,15 +55,13 @@ import regisImage from '../assets/images/regis.png';
             <span class="text-gradient-gold block">dirigeant de PME.</span>
           </h2>
 
-          <div class="space-y-8 text-lg text-gray-300 font-crimson mb-10">
-            <p class="leading-relaxed">
-              Depuis plus de 10 ans, j'accompagne des dirigeants comme vous à structurer leur croissance 
-              et à dépasser les plateaux qui limitent leur développement.
+          <div class="space-y-8 text-xl text-gray-300 font-crimson mb-10">
+            <p class="leading-relaxed font-crimson">
+              Entre pression administrative, gestion des équipes et des locaux, faire croître votre activité devient vite une source de charge mentale continue — et de journées à rallonge.
             </p>
             
-            <p class="leading-relaxed">
-              Avec la Méthode AIA™, vous gagnez en clarté stratégique, automatisez vos processus clés, 
-              et accélérez votre développement de manière durable.
+            <p class="leading-relaxed font-crimson">
+              C’est parce que j’ai vécu ces mêmes frustrations que j’ai conçu la Méthode AIA™ : un cadre simple et structurant, pour vous aider à reprendre la main sur le développement de votre activité — marketing et opérationnel — sans complexité inutile.
             </p>
 
             <!-- Premium trust indicator with glassmorphism -->
@@ -59,12 +70,12 @@ import regisImage from '../assets/images/regis.png';
                 <svg class="w-8 h-8 text-gold-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <p class="font-bold text-gold-400 text-xl">
-                  +300 entreprises accompagnées
+                <p class="font-bold text-gold-400 text-xl font-crimson">
+                  Issu de plus de 10 ans d’expérience terrain, validé par des dirigeants de PME ambitieuses.
                 </p>
               </div>
-              <p class="text-gold-300 font-semibold">
-                En France et en Europe • Résultats mesurables en moins de 90 jours
+              <p class="text-gold-300 font-semibold font-crimson">
+                Un plan structuré pour générer des résultats progressifs dès 90 jours.
               </p>
             </div>
           </div>
@@ -85,7 +96,7 @@ import regisImage from '../assets/images/regis.png';
               href="/a-propos"
               class="inline-flex items-center px-8 py-4 cta-secondary-dark text-white font-semibold rounded-full hover-lift transition-all duration-300 text-lg"
             >
-              Mon parcours complet
+              Qui suis-je ?
               <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
               </svg>
