@@ -1,28 +1,33 @@
 ---
 const resources = [
   {
-    title: "Checklist",
-    subtitle: "Alignez votre offre en 7 jours",
-    description: "Guide étape par étape pour clarifier votre proposition de valeur et vous démarquer"
+    title: "Guide Clarté AIA™",
+    subtitle: "Clarifiez votre offre en 5 questions",
+    description: "Un mini-guide pour faire le point rapidement sur votre proposition de valeur et identifier vos points de confusion",
+    icon: "sparkles", // Changé de 'file-text' à 'sparkles'
+    color: "from-amber-500 to-amber-600"
   },
   {
-    title: "Template",
-    subtitle: "Votre plan de croissance sur 90 jours", 
-    description: "Modèle complet pour structurer votre développement avec timeline précise"
+    title: "Kit d'Acquisition AIA™",
+    subtitle: "Les 5 briques pour attirer plus de clients",
+    description: "Une méthode simple pour consolider votre acquisition et arrêter de dépendre uniquement du bouche-à-oreille",
+    icon: "users", // Changé de 'megaphone' à 'users'
+    color: "from-blue-500 to-blue-600"
   },
   {
-    title: "Audit Express",
-    subtitle: "Diagnostiquez votre moteur d'acquisition",
-    description: "Évaluation rapide de vos performances actuelles et axes d'amélioration"
+    title: "Flash Audit AIA™",
+    subtitle: "Faites le point sur vos systèmes internes",
+    description: "Identifiez les points de blocage et les leviers d'automatisation pour gagner en temps et en efficacité",
+    icon: "lightning-bolt", // Changé de 'settings' à 'lightning-bolt'
+    color: "from-purple-500 to-purple-600"
   }
 ];
 ---
 
 <section id="resources" class="py-20 lg:py-32 relative overflow-hidden">
-  <!-- Simple dark background -->
   <div class="absolute inset-0 bg-navy-black"></div>
-  
-  <!-- Enhanced floating elements for depth -->
+
+  <!-- Floating background circles -->
   <div class="absolute top-20 left-10 w-64 h-64 bg-blue-500/25 rounded-full blur-3xl float-slow"></div>
   <div class="absolute bottom-20 right-10 w-80 h-80 bg-indigo-500/30 rounded-full blur-3xl float-medium"></div>
   <div class="absolute top-1/2 left-1/4 w-48 h-48 bg-purple-500/30 rounded-full blur-2xl float-fast"></div>
@@ -30,7 +35,6 @@ const resources = [
 
   <div class="relative z-10 container mx-auto px-6">
     <div class="max-w-6xl mx-auto text-center">
-      <!-- Enhanced section header -->
       <div class="inline-flex items-center px-6 py-3 glass rounded-full mb-8 animate-fade-in">
         <svg class="w-5 h-5 mr-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -50,55 +54,48 @@ const resources = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         {resources.map((resource, index) => (
           <div
-            class={`glass-strong p-10 rounded-3xl hover-lift transition-all duration-500 ${
+            class={`glass-strong p-10 rounded-3xl hover-lift transition-all duration-500 flex flex-col justify-between ${
               index === 0 ? 'animate-slide-left' : 
               index === 1 ? 'animate-fade-in' : 'animate-slide-right'
             }`}
             style={`animation-delay: ${0.3 + index * 0.2}s`}
           >
-            <div class={`w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-8 ${
-              index === 0 ? 'bg-gradient-to-r from-amber-500 to-amber-600' : 
-              index === 1 ? 'bg-gradient-to-r from-blue-500 to-blue-600' : 'bg-gradient-to-r from-purple-500 to-purple-600'
-            }`}>
-              {index === 0 && (
-                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 01-2-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-              )}
-              {index === 1 && (
-                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              )}
-              {index === 2 && (
-                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-              )}
+            <div class={`w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-8 bg-gradient-to-r ${resource.color}`}>
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                {resource.icon === 'sparkles' && (
+                  <!-- Icône étoiles/sparkles pour la clarté -->
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                )}
+                {resource.icon === 'users' && (
+                  <!-- Icône utilisateurs/groupe pour l'acquisition -->
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                )}
+                {resource.icon === 'lightning-bolt' && (
+                  <!-- Icône éclair pour l'audit rapide -->
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                )}
+              </svg>
             </div>
-            
-            <h3 class="text-2xl font-bold text-white mb-3">
-              {resource.title}
-            </h3>
-            
-            <h4 class="text-xl font-semibold text-gradient-gold mb-6 font-crimson leading-tight">
-              {resource.subtitle}
-            </h4>
-            
-            <p class="text-gray-300 font-crimson mb-8 leading-relaxed text-lg">
-              {resource.description}
-            </p>
 
-            <a href="/ressources" 
-               class="block w-full py-4 px-6 cta-secondary-dark text-white font-semibold rounded-full hover-lift transition-all duration-300 text-center"
-               onclick="if (typeof window !== 'undefined' && window.trackConversion) { window.trackConversion.leadMagnetDownloaded('Free Resources'); }">
-              Télécharger gratuitement
-            </a>
+            <div class="flex flex-col justify-between h-full">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-3">{resource.title}</h3>
+                <h4 class="text-xl font-semibold text-gradient-gold mb-6 font-crimson leading-tight">{resource.subtitle}</h4>
+                <p class="text-gray-300 font-crimson mb-8 leading-relaxed text-lg min-h-[96px]">{resource.description}</p>
+              </div>
+              <a
+                href="/ressources"
+                class="block w-full py-4 px-6 cta-secondary-dark text-white font-semibold rounded-full hover-lift transition-all duration-300 text-center"
+                onclick="window.trackConversion && window.trackConversion.leadMagnetDownloaded('Free Resources')"
+              >
+                Télécharger gratuitement
+              </a>
+            </div>
           </div>
         ))}
       </div>
 
-      <!-- Enhanced main CTA -->
+      <!-- Main CTA -->
       <div class="animate-fade-in" style="animation-delay: 0.9s;">
         <div class="glass-strong p-8 rounded-3xl max-w-4xl mx-auto mb-8 hover-lift transition-all duration-500">
           <h3 class="text-2xl font-bold text-white mb-4 font-crimson">
@@ -108,7 +105,7 @@ const resources = [
             Pas de spam, pas de vente forcée. Juste des outils pratiques pour faire progresser votre entreprise dès aujourd'hui.
           </p>
         </div>
-        
+
         <a
           href="/ressources"
           class="inline-flex items-center px-12 py-6 cta-primary text-white font-semibold rounded-full hover-lift transition-all duration-300 text-xl"

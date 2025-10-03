@@ -20,41 +20,36 @@ import SuiteDashForm from './SuiteDashForm.astro';
 
         <h3 class="text-lg font-semibold mb-2">Restons connectés</h3>
         <div class="flex space-x-4 mt-2 text-white">
-          <!-- YouTube (officiel) -->
+          <!-- YouTube -->
           <a href="#" aria-label="YouTube" class="hover:text-red-500">
             <svg class="w-5 h-5" viewBox="0 0 576 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M549.7 124.1c-6.3-23.7-24.9-42.3-48.6-48.6C456.7 64 288 64 288 64S119.3 64 74.9 75.5c-23.7 6.3-42.3 24.9-48.6 48.6C15.9 168.5 15.9 256 15.9 256s0 87.5 10.4 131.9c6.3 23.7 24.9 42.3 48.6 48.6C119.3 448 288 448 288 448s168.7 0 213.1-11.5c23.7-6.3 42.3-24.9 48.6-48.6 10.4-44.4 10.4-131.9 10.4-131.9s0-87.5-10.4-131.9zM232 334.7V177.3L361.6 256 232 334.7z"/>
             </svg>
           </a>
-
           <!-- Facebook -->
           <a href="#" aria-label="Facebook" class="hover:text-blue-500">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.2 3-3.2.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0022 12z" />
             </svg>
           </a>
-
           <!-- Instagram -->
           <a href="#" aria-label="Instagram" class="hover:text-pink-400">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.3 3 3v10c0 1.6-1.3 3-3 3H7c-1.6 0-3-1.3-3-3V7c0-1.6 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-2a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
             </svg>
           </a>
-
           <!-- LinkedIn -->
           <a href="#" aria-label="LinkedIn" class="hover:text-blue-300">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 8.98h4v12H3v-12zM9 9h3.6v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.7 0 4.4 2.4 4.4 5.6v6.6h-4v-5.9c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1v6h-4v-12z" />
             </svg>
           </a>
-
-          <!-- Twitter (X) -->
+          <!-- Twitter -->
           <a href="#" aria-label="Twitter" class="hover:text-sky-400">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.27 4.27 0 001.88-2.36 8.44 8.44 0 01-2.69 1.03 4.24 4.24 0 00-7.3 3.87A12.02 12.02 0 013 5.1a4.22 4.22 0 001.31 5.65A4.23 4.23 0 012.8 10v.05a4.25 4.25 0 003.4 4.17 4.3 4.3 0 01-1.91.07 4.26 4.26 0 003.97 2.95A8.5 8.5 0 012 19.54 12.02 12.02 0 008.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.36-.01-.54A8.3 8.3 0 0022.46 6z" />
             </svg>
           </a>
-
           <!-- TikTok -->
           <a href="#" aria-label="TikTok" class="hover:text-gray-400">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -72,8 +67,6 @@ import SuiteDashForm from './SuiteDashForm.astro';
         <li><a href="/methode-aia" class="hover:underline">Méthode AIA™</a></li>
         <li><a href="/a-propos" class="hover:underline">À propos de Régis</a></li>
         <li><a href="/travailler-avec-moi" class="hover:underline">Travailler avec moi</a></li>
-        {/* <li><a href="/temoignages" class="hover:underline">Témoignages</a></li> */}
-        {/* <li><a href="/etudes-de-cas" class="hover:underline">Études de cas</a></li> */}
       </ul>
     </div>
 
@@ -87,20 +80,27 @@ import SuiteDashForm from './SuiteDashForm.astro';
       </ul>
     </div>
 
-    <!-- Colonne 4 : Newsletter -->
+    <!-- Colonne 4 : Newsletter (anti-scroll) -->
     <div>
-      <h3 class="text-lg font-semibold mb-2">Newsletter</h3>
-      <p class="text-sm text-gray-300 mb-2">
+      <h3 class="text-lg font-semibold mb-2">Pap'AIA la Newsletter</h3>
+      <p class="text-sm text-gray-300 mb-4">
         Des stratégies avancées, des outils testés, et des idées concrètes pour bâtir une entreprise solide et scalable.
       </p>
-      <div class="mt-4">
-        <SuiteDashForm
-          formUrl="https://your-suitedash-url.com/frm/newsletter"
-          height="200px"
-          trustText="🔒 Pas de spam, désinscription en un clic"
-          loadingText="Chargement..."
-          containerClass="bg-transparent p-0"
-        />
+
+      <!-- Wrapper : borne la hauteur et masque le surplus -->
+      <div class="newsletter-embed relative max-w-sm w-full rounded-lg bg-transparent text-white
+                  overflow-hidden h-[228px] md:h-[220px]">
+
+        <!-- Scale léger pour compacter le contenu SuiteDash -->
+        <div class="sd-scale origin-top-right absolute top-0 right-0 left-0">
+          <SuiteDashForm
+            formUrl="https://acces.regisrolnin.com/la-newsletter-papaia"
+            height="240px"
+            trustText="🔒 Pas de spam"
+            loadingText="Chargement..."
+            containerClass="bg-transparent p-3"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -114,3 +114,41 @@ import SuiteDashForm from './SuiteDashForm.astro';
     <a href="/cgv" class="hover:underline mx-1">CGV</a>
   </div>
 </footer>
+
+<style is:global>
+  /* Compaction douce et anti-scroll */
+  .newsletter-embed { /* borne stricte */
+    /* rien ici, classes Tailwind font le job */
+  }
+  .newsletter-embed .sd-scale {
+    transform: scale(0.94);       /* compact */
+  }
+  @media (min-width: 768px) {
+    .newsletter-embed .sd-scale { transform: scale(0.96); }
+  }
+
+  /* Si SuiteDash charge un iframe, sécurise la hauteur */
+  .newsletter-embed iframe {
+    height: 240px !important;
+  }
+
+  /* Si SuiteDash injecte du HTML (pas iframe), limite marges/paddings génériques */
+  .newsletter-embed :where(form, .form, .sd-form){
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .newsletter-embed :where(input, select, textarea){
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+  }
+  .newsletter-embed :where(button, [type="submit"]){
+    font-weight: 600;
+  }
+
+  /* Mini-texte confiance pour gagner de la place */
+  .newsletter-embed :where(.trust-text){
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+    margin-top: 0.25rem !important;
+  }
+</style>

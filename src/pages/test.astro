@@ -1,7 +1,17 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Ces données seraient normalement passées via les props depuis votre système de booking
+const sessionData = {
+  date: "Session prévue",
+  time: "Détails par email",
+  zoomLink: "#",
+  calendarLink: "#",
+  icsDownload: "#",
+  modifyBookingLink: "#"
+};
 ---
 
 <Layout 
@@ -30,159 +40,66 @@ import Footer from '../../components/Footer.astro';
           </div>
           
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 mb-6 leading-tight max-w-4xl mx-auto font-crimson animate-fade-in" style="animation-delay: 0.1s;">
-            Merci ! Votre session stratégique <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">est confirmée</span>
+            Votre session stratégique <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">est confirmée</span>
           </h1>
           
           <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto font-crimson animate-fade-in" style="animation-delay: 0.2s;">
-            Regardez cette vidéo de préparation, puis consultez votre email pour tous les détails confidentiels de votre session
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="py-20 lg:py-32 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-navy-900 mb-4 font-crimson">
-            Préparez votre session en <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">5 minutes</span>
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto font-crimson">
-            Cette vidéo vous explique comment maximiser l'impact de notre échange
+            Voici votre plan de préparation pour maximiser l'impact de notre échange :
           </p>
         </div>
         
-        <!-- Video Container -->
-        <div class="max-w-4xl mx-auto mb-16">
-          <div class="aspect-w-16 aspect-h-9 bg-gray-900 rounded-3xl overflow-hidden shadow-2xl mb-10">
-            <iframe 
-              src="https://www.youtube.com/embed/r7CEX2euAVw" 
-              class="w-full h-full"
-              style="aspect-ratio: 16/9;"
-              title="Comment préparer votre session stratégique"
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
-          </div>
-          
-          <!-- Video Benefits Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-gradient-to-b from-blue-50 to-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        <!-- Confirmation Details -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-blue-100/50 max-w-4xl mx-auto mb-16 animate-fade-in" style="animation-delay: 0.3s;">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center p-4">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <h3 class="text-lg font-bold text-navy-900 mb-2 font-crimson text-center">Questions clés</h3>
-              <p class="text-gray-600 text-center font-crimson">Les 3 questions à préparer pour optimiser notre temps</p>
+              <h3 class="text-lg font-semibold text-gray-700 mb-2 font-crimson">Date & Heure</h3>
+              <p class="text-2xl font-bold text-navy-900 font-crimson">{sessionData.date}</p>
+              <p class="text-lg text-gray-600 font-crimson">{sessionData.time}</p>
             </div>
             
-            <div class="bg-gradient-to-b from-purple-50 to-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            <div class="text-center p-4">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <h3 class="text-lg font-bold text-navy-900 mb-2 font-crimson text-center">Diagnostic rapide</h3>
-              <p class="text-gray-600 text-center font-crimson">Comment identifier vos 3 leviers de croissance prioritaires</p>
+              <h3 class="text-lg font-semibold text-gray-700 mb-2 font-crimson">Lien Meet</h3>
+              <p class="text-lg text-gray-600 font-crimson">Envoyé par email</p>
+              <a href={sessionData.zoomLink} class="mt-2 inline-block text-blue-600 font-medium hover:underline font-crimson">
+                Tester votre connexion
+              </a>
             </div>
             
-            <div class="bg-gradient-to-b from-amber-50 to-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-navy-900 mb-2 font-crimson text-center">Données clés</h3>
-              <p class="text-gray-600 text-center font-crimson">Les métriques essentielles à avoir sous la main</p>
-            </div>
-            
-            <div class="bg-gradient-to-b from-green-50 to-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center p-4">
+              <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h3 class="text-lg font-bold text-navy-900 mb-2 font-crimson text-center">Timing </h3>
-              <p class="text-gray-600 text-center font-crimson">30 minutes pour un plan d'action de 90 jours</p>
+              <h3 class="text-lg font-semibold text-gray-700 mb-2 font-crimson">Durée</h3>
+              <p class="text-2xl font-bold text-navy-900 font-crimson">30 Minutes</p>
+              <p class="text-lg text-gray-600 font-crimson">Sans engagement</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Email Recap Section -->
-    <section class="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-blue-50">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mb-4 font-crimson">
-              Vérifiez votre <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">boîte email</span>
-            </h2>
-            <p class="text-xl text-gray-600 font-crimson">
-              Vous recevrez dans les prochaines minutes un email confidentiel avec tous les détails de votre session
-            </p>
           </div>
           
-          <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-blue-100/50">
-            <div class="flex items-center justify-center mb-8">
-              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-navy-900 font-crimson">Email de confirmation envoyé</h3>
-                <p class="text-gray-600 font-crimson">Informations confidentielles de votre session</p>
-              </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="space-y-4">
-                <h4 class="font-bold text-lg text-gray-900 font-crimson">Contenu de l'email :</h4>
-                <ul class="space-y-3">
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="font-crimson">Date et heure exactes de votre session</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="font-crimson">Lien Google Meet personnel et sécurisé</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="font-crimson">Fichier .ics pour ajouter à votre calendrier</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="font-crimson">Rappel automatique 24h avant</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-50 rounded-xl p-6">
-                <h4 class="font-bold text-lg text-gray-900 mb-4 font-crimson flex items-center">
-                  <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  Email non reçu ?
-                </h4>
-                <div class="space-y-3">
-                  <p class="text-gray-700 font-crimson">• Vérifiez vos spams/indésirables</p>
-                  <p class="text-gray-700 font-crimson">• Attendez 10-15 minutes maximum</p>
-                  <p class="text-gray-700 font-crimson">• Contactez-nous si nécessaire</p>
-                </div>
-              </div>
-            </div>
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <a href={sessionData.calendarLink} class="px-6 py-3 bg-white border border-blue-600 text-blue-600 font-medium rounded-lg flex items-center justify-center hover:bg-blue-50 transition-all font-crimson">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              Ajouter à Google Calendar
+            </a>
+            <a href={sessionData.icsDownload} class="px-6 py-3 bg-white border border-purple-600 text-purple-600 font-medium rounded-lg flex items-center justify-center hover:bg-purple-50 transition-all font-crimson">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+              Télécharger .ICS
+            </a>
           </div>
         </div>
       </div>
@@ -374,13 +291,13 @@ import Footer from '../../components/Footer.astro';
             <p class="text-gray-600 mb-6 font-crimson">
               Besoin d'ajuster votre créneau ? Nous comprenons que les agendas peuvent changer.
             </p>
-             <div class="space-y-4">
-              <div class="inline-flex items-center px-5 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg font-crimson">
+            <div class="space-y-4">
+              <a href={sessionData.modifyBookingLink} class="inline-flex items-center px-5 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-all font-crimson">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                Toutes les infos dans votre email
-              </div>
+                Changer de créneau
+              </a>
               <a href="mailto:contact@regisrolnin.com?subject=Modification de session" class="inline-flex items-center px-5 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all font-crimson">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -509,4 +426,3 @@ import Footer from '../../components/Footer.astro';
   .text-navy-900 {
     color: #0f172a;
   }
-</style>
