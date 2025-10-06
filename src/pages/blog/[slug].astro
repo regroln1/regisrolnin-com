@@ -11,7 +11,7 @@ export const prerender = true;
 // Build statique : fournir explicitement les chemins
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
+  return posts.map((post: BlogPost) => ({
     params: { slug: post.slug },
     props: { post },
   }));
