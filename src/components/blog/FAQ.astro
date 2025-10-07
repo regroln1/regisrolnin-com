@@ -1,0 +1,100 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+}
+
+const { items } = Astro.props;
+
+// JSON-LD Schema pour FAQ
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+{items.length > 0 && (
+  <>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-2xl mb-6">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-navy-900 font-crimson mb-4">
+              Questions Fréquentes
+            </h2>
+            <p class="text-lg text-gray-600 font-crimson">
+              Retrouvez les réponses aux questions les plus courantes
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            {items.map((item, index) => (
+              <details class="group bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <summary class="flex items-center justify-between p-6 md:p-8 cursor-pointer list-none">
+                  <div class="flex items-start flex-1 mr-4">
+                    <div class="w-8 h-8 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 group-open:bg-gradient-to-r group-open:from-blue-500 group-open:to-purple-600 transition-all duration-300">
+                      <span class="text-white font-bold text-sm">{index + 1}</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold text-navy-900 font-crimson leading-tight">
+                      {item.question}
+                    </h3>
+                  </div>
+                  <svg 
+                    class="w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-300 group-open:rotate-180 group-open:text-blue-600" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </summary>
+                
+                <div class="px-6 md:px-8 pb-6 md:pb-8 pt-2">
+                  <div class="ml-12 pl-4 border-l-4 border-emerald-200">
+                    <p class="text-gray-700 font-crimson leading-relaxed text-lg">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+
+          <div class="mt-12 bg-white rounded-2xl shadow-lg p-8 text-center">
+            <p class="text-gray-700 font-crimson text-lg mb-4">
+              Vous avez d'autres questions ?
+            </p>
+            <a 
+              href="/contact" 
+              class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Contactez-nous
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </>
+)}

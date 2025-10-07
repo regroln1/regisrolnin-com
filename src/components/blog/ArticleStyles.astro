@@ -1,0 +1,94 @@
+<style>
+  .toc a {
+    transition: all 0.2s ease;
+  }
+  
+  .toc a:hover,
+  .toc a.active {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateX(4px);
+    color: #3b82f6 !important;
+  }
+  
+  .toc a.active span {
+    background-color: #3b82f6 !important;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    scroll-margin-top: 120px;
+    position: relative;
+  }
+  
+  .prose h2::before, .prose h3::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    border-radius: 2px;
+  }
+  
+  .prose h2::before {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  }
+  
+  .prose h3::before {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  }
+  
+  .prose blockquote {
+    position: relative;
+    margin: 3rem 0;
+    font-style: italic;
+  }
+  
+  .prose blockquote::before {
+    content: '"';
+    position: absolute;
+    left: -15px;
+    top: -15px;
+    font-size: 4rem;
+    color: #f59e0b;
+    opacity: 0.3;
+    font-family: serif;
+    line-height: 1;
+  }
+  
+  .prose ul li::marker {
+    color: #3b82f6;
+  }
+  
+  .prose ol li::marker {
+    color: #8b5cf6;
+    font-weight: bold;
+  }
+  
+  .float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+  
+  .float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+  }
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(-1deg); }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

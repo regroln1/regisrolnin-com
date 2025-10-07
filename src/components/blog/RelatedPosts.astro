@@ -1,0 +1,121 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, getReadingTime } from '../../utils/blog';
+
+interface Props {
+  currentSlug: string;
+  currentTags: string[];
+  allPosts: CollectionEntry<'blog'>[];
+  limit?: number;
+}
+
+const { currentSlug, currentTags, allPosts, limit = 3 } = Astro.props;
+
+const relatedPosts = allPosts
+  .filter(post => post.slug !== currentSlug)
+  .map(post => {
+    const postTags = post.data.tags || [];
+    const commonTags = postTags.filter((tag: string) => currentTags.includes(tag));
+    return {
+      post,
+      score: commonTags.length
+    };
+  })
+  .filter(item => item.score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, limit)
+  .map(item => item.post);
+
+const finalPosts = relatedPosts.length < limit
+  ? [
+      ...relatedPosts,
+      ...allPosts
+        .filter(post => post.slug !== currentSlug && !relatedPosts.includes(post))
+        .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+        .slice(0, limit - relatedPosts.length)
+    ]
+  : relatedPosts;
+---
+
+{finalPosts.length > 0 && (
+  <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-navy-900 font-crimson mb-4">
+            Articles recommandés
+          </h2>
+          <p class="text-lg text-gray-600 font-crimson">
+            Continuez votre lecture avec ces contenus similaires
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {finalPosts.map((post) => {
+            const readingTime = getReadingTime(post.body || '');
+            const postTags = post.data.tags || [];
+            const image = post.data.image || '/images/default-blog.jpg';
+            
+            return (
+              <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+                <a href={`/blog/${post.slug}`} class="block">
+                  <div class="relative h-48 overflow-hidden">
+                    <img 
+                      src={image} 
+                      alt={post.data.title}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    
+                    {postTags[0] && (
+                      <span class="absolute top-4 left-4 px-3 py-1 text-xs font-semibold bg-blue-600 text-white rounded-full">
+                        {postTags[0]}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold text-navy-900 font-crimson mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                      {post.data.title}
+                    </h3>
+                    
+                    <p class="text-gray-600 font-crimson mb-4 line-clamp-3">
+                      {post.data.description}
+                    </p>
+
+                    <div class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                      <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2z"></path>
+                        </svg>
+                        <span>{formatDate(new Date(post.data.pubDate))}</span>
+                      </div>
+                      <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>{readingTime} min</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            );
+          })}
+        </div>
+
+        <div class="text-center mt-12">
+          <a 
+            href="/blog" 
+            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            Voir tous les articles
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+)}

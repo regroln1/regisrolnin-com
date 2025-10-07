@@ -1,18 +1,22 @@
 import { defineCollection, z } from 'astro:content';
 
-// Schema pour les items FAQ
+// Schema pour les items FAQ (aligné avec FAQ.astro)
 const faqItemSchema = z.object({
-  q: z.string().describe('Question'),
-  a: z.string().describe('Réponse'),
-  id: z.string().optional().describe('ID auto-généré pour les ancres')
+  question: z.string().describe('Question'),
+  answer: z.string().describe('Réponse'),
 });
 
-// Schema pour les items du glossaire
+// Schema pour les items du glossaire (aligné avec Glossary.astro)
 const glossaryItemSchema = z.object({
   term: z.string().describe('Terme à définir'),
   definition: z.string().describe('Définition du terme'),
-  synonyms: z.array(z.string()).optional().describe('Synonymes du terme'),
-  relatedTerms: z.array(z.string()).optional().describe('Termes liés')
+});
+
+// Schema pour les réseaux sociaux de l'auteur
+const authorSocialSchema = z.object({
+  linkedin: z.string().url().optional(),
+  twitter: z.string().url().optional(),
+  website: z.string().url().optional(),
 });
 
 // Schema enrichi pour la collection blog
@@ -28,16 +32,23 @@ const blog = defineCollection({
       .min(120, 'La description doit faire au moins 120 caractères')
       .max(160, 'La description ne doit pas dépasser 160 caractères pour le SEO'),
     
-    pubDate: z.date().describe('Date de publication'),
+    pubDate: z.coerce.date().describe('Date de publication'),
     
     tags: z.array(z.string())
       .min(1, 'Au moins un tag est requis')
-      .max(5, 'Maximum 5 tags par article'),
+      .max(5, 'Maximum 5 tags par article')
+      .default([]),
     
     author: z.string().default('Régis Rolnin'),
     
+    // Champs pour AuthorBio.astro
+    authorBio: z.string().optional().describe('Biographie de l\'auteur'),
+    authorImage: z.string().optional().describe('Image de l\'auteur'),
+    authorRole: z.string().optional().describe('Rôle/titre de l\'auteur'),
+    authorSocial: authorSocialSchema.optional().describe('Réseaux sociaux de l\'auteur'),
+    
     // Champs optionnels de base
-    image: z.string().url().optional().describe('URL de l\'image principale'),
+    image: z.string().optional().describe('URL de l\'image principale'),
     
     excerpt: z.string()
       .max(300, 'L\'extrait ne doit pas dépasser 300 caractères')
@@ -45,6 +56,19 @@ const blog = defineCollection({
       .describe('Résumé court de l\'article'),
     
     draft: z.boolean().default(false).describe('Article en brouillon'),
+    
+    // Enrichissements pour les composants
+    faq: z.array(faqItemSchema)
+      .max(10, 'Maximum 10 questions FAQ par article')
+      .optional()
+      .default([])
+      .describe('Questions/réponses pour rich snippets'),
+    
+    glossary: z.array(glossaryItemSchema)
+      .max(20, 'Maximum 20 termes de glossaire par article')
+      .optional()
+      .default([])
+      .describe('Définitions de termes techniques'),
     
     // Enrichissements SEO/AEO
     quickAnswer: z.string()
@@ -62,23 +86,12 @@ const blog = defineCollection({
       .optional()
       .describe('Titre SEO différent du titre d\'affichage'),
     
-    // Contenu enrichi pour AEO/AIO
-    faq: z.array(faqItemSchema)
-      .max(10, 'Maximum 10 questions FAQ par article')
-      .optional()
-      .describe('Questions/réponses pour rich snippets'),
-    
-    glossary: z.array(glossaryItemSchema)
-      .max(20, 'Maximum 20 termes de glossaire par article')
-      .optional()
-      .describe('Définitions de termes techniques'),
-    
     relatedPosts: z.array(z.string())
       .max(5, 'Maximum 5 articles liés')
       .optional()
       .describe('Slugs des articles recommandés'),
     
-    // Métadonnées techniques (auto-générées)
+    // Métadonnées techniques
     readingTime: z.number()
       .positive()
       .optional()
@@ -89,7 +102,7 @@ const blog = defineCollection({
       .optional()
       .describe('Nombre de mots (auto-calculé)'),
     
-    lastModified: z.date()
+    lastModified: z.coerce.date()
       .optional()
       .describe('Date de dernière modification'),
     
@@ -107,7 +120,7 @@ const blog = defineCollection({
       .describe('Langue de l\'article'),
     
     // Configuration SEO avancée
-    canonical: z.string().url()
+    canonical: z.string()
       .optional()
       .describe('URL canonique si différente'),
     
@@ -144,41 +157,6 @@ const blog = defineCollection({
       'TechArticle',
       'HowTo'
     ]).default('BlogPosting').describe('Type de schema.org')
-    
-  }).transform((data) => {
-    // Transformations automatiques
-    
-    // Génération de l'excerpt si absent
-    if (!data.excerpt && data.description) {
-      data.excerpt = data.description.length > 200 
-        ? data.description.substring(0, 197) + '...'
-        : data.description;
-    }
-    
-    // Génération du metaTitle si absent
-    if (!data.metaTitle) {
-      data.metaTitle = data.title.length > 60 
-        ? data.title.substring(0, 57) + '...'
-        : data.title;
-    }
-    
-    // Génération automatique d'IDs pour FAQ
-    if (data.faq) {
-      data.faq = data.faq.map((item, index) => ({
-        ...item,
-        id: item.id || `faq-${index + 1}`
-      }));
-    }
-    
-    // Normalisation des tags (lowercase, sans espaces)
-    data.tags = data.tags.map(tag => 
-      tag.toLowerCase().replace(/\s+/g, '-')
-    );
-    
-    // Mise à jour automatique de lastModified
-    data.lastModified = new Date();
-    
-    return data;
   })
 });
 

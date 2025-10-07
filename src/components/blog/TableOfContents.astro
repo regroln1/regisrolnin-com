@@ -1,0 +1,40 @@
+---
+import type { TOCItem } from "../../utils/blog";
+
+interface Props {
+  items: TOCItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-lg border border-blue-100 p-8">
+    <div class="flex items-center mb-6">
+      <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+        </svg>
+      </div>
+      <h3 class="text-lg font-bold text-navy-900 font-crimson">
+        Sommaire
+      </h3>
+    </div>
+    <nav class="toc">
+      <ul class="space-y-3">
+        {items.map((item) => (
+          <li class={`toc-level-${item.level}`}>
+            <a 
+              href={`#${item.id}`}
+              class="group flex items-start text-sm text-gray-700 hover:text-blue-600 transition-all duration-200 py-2 px-3 rounded-lg hover:bg-white/80"
+              style={`margin-left: ${(item.level - 2) * 16}px`}
+            >
+              <span class="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-2 flex-shrink-0 group-hover:bg-blue-600 transition-colors"></span>
+              <span class="font-crimson leading-relaxed">{item.text}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+)}
