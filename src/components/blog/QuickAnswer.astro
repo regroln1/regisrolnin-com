@@ -1,0 +1,23 @@
+---
+export interface Props {
+  answer: string;
+}
+
+const { answer } = Astro.props;
+---
+
+<section 
+  class="relative my-10 p-6 rounded-2xl bg-blue-50/70 border border-blue-100 shadow-sm backdrop-blur-sm transition hover:shadow-md hover:bg-blue-50/90"
+>
+  <div class="flex items-start gap-3">
+    <div class="text-blue-600 text-2xl mt-1">💡</div>
+    <div class="flex-1">
+      <h2 class="text-blue-700 text-lg font-semibold mb-1">
+        L’essentiel à retenir
+      </h2>
+      <p class="text-gray-800 leading-relaxed text-base">
+        {answer}
+      </p>
+    </div>
+  </div>
+</section>

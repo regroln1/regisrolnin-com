@@ -16,6 +16,7 @@ import AuthorBio from '../../components/blog/AuthorBio.astro';
 import RelatedPosts from '../../components/blog/RelatedPosts.astro';
 import Glossary from '../../components/blog/Glossary.astro';
 import FAQ from '../../components/blog/FAQ.astro';
+import QuickAnswer from '../../components/blog/QuickAnswer.astro'; // ✅ AJOUT IMPORT
 import { getReadingTime, generateTableOfContents } from '../../utils/blog';
 
 export const prerender = true;
@@ -51,6 +52,7 @@ const publishedISO = pub.toISOString();
 const tags = Array.isArray(post?.data?.tags) ? post.data.tags : [];
 const author = post?.data?.author ?? 'Régis Rolnin';
 const image = post?.data?.image ?? '/images/regis.png';
+const quickAnswer = post?.data?.quickAnswer; // ✅ AJOUT NOUVELLE VARIABLE
 
 // Données optionnelles pour les nouveaux composants
 const glossary = post?.data?.glossary ?? [];
@@ -120,6 +122,10 @@ const jsonLd = {
       <div class="relative z-10 container mx-auto px-6">
         <div class="max-w-4xl mx-auto">
           <ArticleBreadcrumb title={post.data.title} />
+          
+          <!-- ✅ AJOUT DU QUICK ANSWER ICI -->
+          {quickAnswer && <QuickAnswer answer={quickAnswer} />}
+          
           <ArticleHeader
             title={post.data.title}
             description={post.data.description}

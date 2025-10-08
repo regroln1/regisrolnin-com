@@ -9,13 +9,14 @@ interface Props {
   publishDate: Date;
   readingTime: number;
   image?: string;
+  quickAnswer?: string; // NOUVEAU
 }
 
-const { title, description, tags, author, publishDate, readingTime, image } = Astro.props;
+const { title, description, tags, author, publishDate, readingTime, image, quickAnswer } = Astro.props;
 ---
 
 <header class="text-center mb-16 animate-fade-in" style="animation-delay: 0.1s;">
-  <!-- Le reste reste identique -->
+  <!-- Tags -->
   <div class="flex flex-wrap justify-center gap-3 mb-8">
     {tags.map((tag: string, index: number) => (
       <span class={`inline-flex items-center px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 hover:scale-105 ${
@@ -31,14 +32,17 @@ const { title, description, tags, author, publishDate, readingTime, image } = As
     ))}
   </div>
 
+  <!-- Title -->
   <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold text-navy-900 mb-8 font-crimson leading-tight max-w-4xl mx-auto">
     {title}
   </h1>
 
+  <!-- Description -->
   <p class="text-xl md:text-2xl text-gray-600 mb-10 font-crimson leading-relaxed max-w-3xl mx-auto">
     {description}
   </p>
 
+  <!-- Meta Info -->
   <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-gray-600 mb-12">
     <div class="flex items-center bg-white rounded-full px-6 py-3 shadow-sm border border-gray-100">
       <a href="/a-propos" class="flex items-center group w-full">
@@ -79,6 +83,7 @@ const { title, description, tags, author, publishDate, readingTime, image } = As
     </div>
   </div>
 
+  <!-- Featured Image -->
   {image && (
     <div class="mb-8 animate-fade-in" style="animation-delay: 0.2s;">
       <div class="relative group">
