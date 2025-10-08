@@ -16,8 +16,9 @@ import AuthorBio from '../../components/blog/AuthorBio.astro';
 import RelatedPosts from '../../components/blog/RelatedPosts.astro';
 import Glossary from '../../components/blog/Glossary.astro';
 import FAQ from '../../components/blog/FAQ.astro';
-import QuickAnswer from '../../components/blog/QuickAnswer.astro'; // ✅ AJOUT IMPORT
+import QuickAnswer from '../../components/blog/QuickAnswer.astro';
 import { getReadingTime, generateTableOfContents } from '../../utils/blog';
+import GlossarySidebar from '../../components/blog/GlossarySidebar.astro';
 
 export const prerender = true;
 
@@ -52,7 +53,7 @@ const publishedISO = pub.toISOString();
 const tags = Array.isArray(post?.data?.tags) ? post.data.tags : [];
 const author = post?.data?.author ?? 'Régis Rolnin';
 const image = post?.data?.image ?? '/images/regis.png';
-const quickAnswer = post?.data?.quickAnswer; // ✅ AJOUT NOUVELLE VARIABLE
+const quickAnswer = post?.data?.quickAnswer;
 
 // Données optionnelles pour les nouveaux composants
 const glossary = post?.data?.glossary ?? [];
@@ -122,19 +123,23 @@ const jsonLd = {
       <div class="relative z-10 container mx-auto px-6">
         <div class="max-w-4xl mx-auto">
           <ArticleBreadcrumb title={post.data.title} />
-          
-          <!-- ✅ AJOUT DU QUICK ANSWER ICI -->
-          {quickAnswer && <QuickAnswer answer={quickAnswer} />}
-          
+
+          <!-- ✅ Titre, description et image -->
           <ArticleHeader
             title={post.data.title}
             description={post.data.description}
-            tags={tags}
             author={author}
             publishDate={pub}
             readingTime={readingTime}
             image={image}
           />
+
+          <!-- ✅ Bloc "L'essentiel à retenir" déplacé sous l'image -->
+          {quickAnswer && (
+            <div class="mt-10">
+              <QuickAnswer answer={quickAnswer} />
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -144,7 +149,14 @@ const jsonLd = {
       <div class="container mx-auto px-6">
         <div class="max-w-7xl mx-auto">
           <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
-            <ArticleSidebar toc={toc} />
+            <ArticleSidebar
+  toc={toc}
+  glossary={glossary}
+  tags={tags}
+  currentSlug={post.slug}
+  title={post.data.title}
+/>
+
             
             <ArticleContent class="lg:col-span-3 order-1 lg:order-2">
               <Content />

@@ -1,19 +1,34 @@
 <style>
+  /* TOC Styles améliorés */
   .toc a {
     transition: all 0.2s ease;
   }
   
   .toc a:hover,
   .toc a.active {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     transform: translateX(4px);
     color: #3b82f6 !important;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
   }
   
   .toc a.active span {
     background-color: #3b82f6 !important;
   }
   
+  /* Glossary collapsible */
+  .glossary-collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  #glossary-content:not(.glossary-collapsed) {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+  }
+  
+  /* Prose Styles */
   .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
     scroll-margin-top: 120px;
     position: relative;
@@ -65,6 +80,7 @@
     font-weight: bold;
   }
   
+  /* Animations */
   .float-slow {
     animation: float-slow 8s ease-in-out infinite;
   }

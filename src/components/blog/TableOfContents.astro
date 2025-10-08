@@ -6,9 +6,12 @@ interface Props {
 }
 
 const { items } = Astro.props;
+
+// Filtrer pour n'afficher QUE les H2
+const h2Items = items.filter(item => item.level === 2);
 ---
 
-{items.length > 0 && (
+{h2Items.length > 0 && (
   <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-lg border border-blue-100 p-8">
     <div class="flex items-center mb-6">
       <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
@@ -21,16 +24,16 @@ const { items } = Astro.props;
       </h3>
     </div>
     <nav class="toc">
-      <ul class="space-y-3">
-        {items.map((item) => (
-          <li class={`toc-level-${item.level}`}>
+      <ul class="space-y-2">
+        {h2Items.map((item) => (
+          <li>
             <a 
               href={`#${item.id}`}
-              class="group flex items-start text-sm text-gray-700 hover:text-blue-600 transition-all duration-200 py-2 px-3 rounded-lg hover:bg-white/80"
-              style={`margin-left: ${(item.level - 2) * 16}px`}
+              class="toc-link group flex items-start text-sm text-gray-700 hover:text-blue-600 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/80 hover:shadow-sm"
+              data-target={item.id}
             >
               <span class="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-2 flex-shrink-0 group-hover:bg-blue-600 transition-colors"></span>
-              <span class="font-crimson leading-relaxed">{item.text}</span>
+              <span class="font-crimson leading-relaxed font-medium">{item.text}</span>
             </a>
           </li>
         ))}
@@ -38,3 +41,76 @@ const { items } = Astro.props;
     </nav>
   </div>
 )}
+
+<script>
+  // Smooth scroll pour TOC
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-link');
+    
+    tocLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const targetId = link.getAttribute('data-target');
+        if (!targetId) return;
+        
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
+        
+        // Scroll avec offset pour le header fixe
+        const headerOffset = 120;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Mise à jour de l'état actif
+        tocLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+    
+    // Détection du scroll pour mettre à jour le lien actif
+    const observerOptions = {
+      rootMargin: '-120px 0px -66% 0px',
+      threshold: 0
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (!id) return;
+          
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-target') === id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+    
+    // Observer tous les H2
+    document.querySelectorAll('article h2[id]').forEach(heading => {
+      observer.observe(heading);
+    });
+  });
+</script>
+
+<style>
+  .toc-link.active {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+  }
+  
+  .toc-link.active span:first-of-type {
+    background-color: #3b82f6;
+    transform: scale(1.2);
+  }
+</style>

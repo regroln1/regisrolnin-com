@@ -6,7 +6,8 @@ const { title } = Astro.props;
 ---
 
 <nav class="mb-10 animate-fade-in">
-  <ol class="flex items-center space-x-2 text-base">
+  <ol class="flex items-center justify-center flex-wrap gap-2 text-base text-gray-700">
+    <!-- Accueil -->
     <li>
       <a 
         href="/" 
@@ -18,13 +19,15 @@ const { title } = Astro.props;
         Accueil
       </a>
     </li>
-    
+
+    <!-- Chevron -->
     <li>
       <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
       </svg>
     </li>
-    
+
+    <!-- Blog -->
     <li>
       <a 
         href="/blog" 
@@ -36,13 +39,15 @@ const { title } = Astro.props;
         Blog
       </a>
     </li>
-    
+
+    <!-- Chevron -->
     <li>
       <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
       </svg>
     </li>
-    
+
+    <!-- Article actuel -->
     <li class="flex items-center">
       <span class="text-navy-900 font-semibold truncate max-w-md bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
         {title}

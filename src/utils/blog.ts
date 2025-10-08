@@ -64,31 +64,32 @@ export function getReadingTime(content: string): number {
 }
 
 /**
- * Génère la table des matières
+ * Génère la table des matières (UNIQUEMENT H2)
  */
 export function generateTableOfContents(content: string): TOCItem[] {
   if (!content) return [];
   
-  const headingRegex = /^(#{2,4})\s+(.+)$/gm;
+  const headingRegex = /^##\s+(.+)$/gm; // uniquement H2
   const toc: TOCItem[] = [];
   let match: RegExpExecArray | null;
-
+  
   while ((match = headingRegex.exec(content)) !== null) {
-    const level: number = match[1].length;
-    const text: string = match[2].trim();
-    
-    const id: string = text
+    const text = match[1].trim();
+    const id = text
       .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Supprime les accents
       .replace(/[^a-z0-9\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-')
       .replace(/^-|-$/g, '');
-
-    toc.push({ id, text, level });
+    
+    toc.push({ id, text, level: 2 });
   }
-
+  
   return toc;
 }
+
 
 /**
  * Récupère tous les articles publiés
