@@ -1,0 +1,109 @@
+---
+interface Props {
+  author?: string;
+  bio?: string;
+  image?: string;
+  role?: string;
+  social?: {
+    linkedin?: string;
+    twitter?: string;
+    youtube?: string;
+    website?: string;
+  };
+  variant?: "hero" | "card";
+}
+
+const {
+  author = "Régis Rolnin",
+  bio = "Architecte de systèmes business pour PME ambitieuses. Créateur de la Méthode AIA™ : un système en 3 étapes pour structurer votre croissance, automatiser vos processus et intégrer l'IA utile.",
+  role = "Growth Expert & Consultant",
+  image = "/images/regis-portrait.png",
+  social = {
+    linkedin: "https://www.linkedin.com/in/regisrolnin/",
+    twitter: "https://x.com/RegisRolnin",
+    youtube: "https://www.youtube.com/@RegisRolnin",
+    website: "https://regisrolnin.com"
+  },
+  variant = "hero"
+} = Astro.props;
+---
+
+{variant === "hero" && (
+  <div class="animate-slide-left flex flex-col justify-center h-full text-center lg:text-left">
+    <!-- Badge -->
+    <div class="inline-flex items-center justify-center lg:justify-start px-6 py-3 bg-white/80 backdrop-blur-sm border border-blue-200/50 rounded-full mb-8 shadow-sm mx-auto lg:mx-0">
+      <svg class="w-5 h-5 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+      <span class="text-sm font-semibold text-blue-600">Votre Expert</span>
+    </div>
+
+    <!-- Titre -->
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 mb-4 font-crimson leading-tight">
+      À propos de <span class="text-gradient-gold block">{author}</span>
+    </h1>
+
+    <!-- Rôle -->
+    <p class="text-lg text-blue-600 font-semibold mb-6">{role}</p>
+
+    <!-- Bio -->
+    <p class="text-xl text-gray-600 mb-10 font-crimson leading-relaxed max-w-xl mx-auto lg:mx-0">
+      {bio}
+    </p>
+
+    <!-- Domaines d’expertise -->
+    <div class="grid grid-cols-3 gap-4 justify-center lg:justify-start mb-10">
+      <div class="bg-white/60 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center">
+        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        </div>
+        <p class="text-sm font-semibold text-gray-700">Marketing Digital</p>
+      </div>
+
+      <div class="bg-white/60 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center">
+        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <p class="text-sm font-semibold text-gray-700">Automatisation</p>
+      </div>
+
+      <div class="bg-white/60 backdrop-blur-sm border border-white/30 rounded-xl p-4 text-center">
+        <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+        </div>
+        <p class="text-sm font-semibold text-gray-700">Systèmes IA</p>
+      </div>
+    </div>
+
+    <!-- Réseaux sociaux -->
+    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+      {social.linkedin && (
+        <a href={social.linkedin} target="_blank" rel="noopener noreferrer" class="flex items-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 8.98h4v12H3v-12zM9 9h3.6v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.7 0 4.4 2.4 4.4 5.6v6.6h-4v-5.9c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1v6h-4v-12z"/></svg>
+          LinkedIn
+        </a>
+      )}
+
+      {social.youtube && (
+        <a href={social.youtube} target="_blank" rel="noopener noreferrer" class="flex items-center px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6zm12-3c0-1.66-.15-3.01-.42-4.13-.27-1.13-1.08-2.03-2.12-2.29C17.88 5.21 12 5.21 12 5.21s-5.88 0-7.46.37C3.5 5.84 2.69 6.74 2.42 7.87 2.15 8.99 2 10.34 2 12c0 1.66.15 3.01.42 4.13.27 1.13 1.08 2.03 2.12 2.29C6.12 18.79 12 18.79 12 18.79s5.88 0 7.46-.37c1.04-.26 1.85-1.16 2.12-2.29.27-1.12.42-2.47.42-4.13z"/></svg>
+          YouTube
+        </a>
+      )}
+
+      {social.twitter && (
+        <a href={social.twitter} target="_blank" rel="noopener noreferrer" class="flex items-center px-5 py-2.5 bg-gray-900 hover:bg-black text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X (Twitter)
+        </a>
+      )}
+    </div>
+  </div>
+)}
