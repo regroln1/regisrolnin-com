@@ -2,7 +2,6 @@
 import TableOfContents from './TableOfContents.astro';
 import SocialShare from './SocialShare.astro';
 import GlossarySidebar from './GlossarySidebar.astro';
-import TagList from './TagList.astro';
 import type { TOCItem } from "../../utils/blog";
 
 interface Props {
@@ -33,8 +32,7 @@ const {
       <GlossarySidebar terms={glossary} maxPreview={3} />
     )}
     
-    <!-- 🏷️ Tags -->
-    {tags.length > 0 && <TagList tags={tags} />}
+
     
     <!-- 🤝 Partage social (X + LinkedIn + Email + Copier) -->
     <SocialShare slug={currentSlug} title={title} />
