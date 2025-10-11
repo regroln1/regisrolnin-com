@@ -12,13 +12,10 @@ import ProgressBar from '../../components/blog/ProgressBar.astro';
 import ArticleJsonLd from '../../components/blog/ArticleJsonLd.astro';
 import ArticleScripts from '../../components/blog/ArticleScripts.astro';
 import ArticleStyles from '../../components/blog/ArticleStyles.astro';
-import PreviousNextArticle from '../../components/blog/PreviousNextArticle.astro';
 import RelatedPosts from '../../components/blog/RelatedPosts.astro';
-import Glossary from '../../components/blog/Glossary.astro';
 import FAQ from '../../components/blog/FAQ.astro';
 import QuickAnswer from '../../components/blog/QuickAnswer.astro';
 import { getReadingTime, generateTableOfContents } from '../../utils/blog';
-import GlossarySidebar from '../../components/blog/GlossarySidebar.astro';
 
 export const prerender = true;
 
@@ -150,13 +147,12 @@ const jsonLd = {
         <div class="max-w-7xl mx-auto">
           <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
             <ArticleSidebar
-  toc={toc}
-  glossary={glossary}
-  tags={tags}
-  currentSlug={post.slug}
-  title={post.data.title}
-/>
-
+              toc={toc}
+              glossary={glossary}
+              tags={tags}
+              currentSlug={post.slug}
+              title={post.data.title}
+            />
             
             <ArticleContent class="lg:col-span-3 order-1 lg:order-2">
               <Content />
@@ -166,27 +162,16 @@ const jsonLd = {
       </div>
     </section>
 
-    <!-- Glossary (si présent) -->
-{glossary.length > 0 && <Glossary terms={glossary} />}
+    <!-- FAQ (si présent) -->
+    {faq.length > 0 && <FAQ items={faq} />}
 
-<!-- FAQ (si présent) -->
-{faq.length > 0 && <FAQ items={faq} />}
-
-<!-- ❌ SUPPRIMÉ : AuthorBio -->
-
-<!-- ✅ AJOUTÉ : Navigation Précédent/Suivant -->
-<PreviousNextArticle 
-  currentSlug={post.slug}
-  allPosts={allPosts}
-/>
-
-<!-- Related Posts -->
-<RelatedPosts 
-  currentSlug={post.slug}
-  currentTags={tags}
-  allPosts={allPosts}
-  limit={3}
-/>
+    <!-- Related Posts -->
+    <RelatedPosts 
+      currentSlug={post.slug}
+      currentTags={tags}
+      allPosts={allPosts}
+      limit={3}
+    />
   </main>
 
   <Footer />
