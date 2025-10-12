@@ -5,7 +5,7 @@ import type { BlogConfig } from '../types/blog';
  */
 export const blogConfig: BlogConfig = {
   // Informations du site
-  siteName: 'Growth Expert',
+  siteName: 'Régis Rolnin | Consultant en Stratégie,Croissance Digitale  Automatisation',
   siteUrl: 'https://regisrolnin.com',
   defaultAuthor: 'Régis Rolnin',
   defaultImage: '/images/regis.png',
