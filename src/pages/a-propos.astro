@@ -5,20 +5,18 @@ import Footer from '../components/Footer.astro';
 
 import { Image } from 'astro:assets';
 import regisPortrait from '../assets/images/regis-portrait.png';
-import AuthorBioPage from '../components/AuthorBioPage.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 ---
 
-<Layout 
-  title="À Propos - Regis ROLNIN | Growth Expert"
-  description="Découvrez le parcours de Regis ROLNIN, architecte de systèmes business et créateur de la Méthode AIA™ pour PME ambitieuses."
+<Layout
+  title="À propos — Régis Rolnin | Consultant en Stratégie, Croissance Digitale & Automatisation"
+  description="Découvrez le parcours de Régis Rolnin, consultant en stratégie, croissance digitale et automatisation. Créateur de la Méthode AIA™ pour aider les PME à structurer leur croissance, automatiser leurs processus et tirer parti de l’IA utile."
   type="profile"
 >
   <Header />
-  
+
   <main class="pt-20">
-    <!-- Hero Section -->
     <section class="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      <!-- Subtle floating elements -->
       <div class="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl float-slow"></div>
       <div class="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl float-medium"></div>
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-amber-500/5 rounded-full blur-2xl float-fast"></div>
@@ -26,27 +24,24 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
       <div class="relative z-10 container mx-auto px-6">
         <div class="max-w-6xl mx-auto">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            <!-- Content Section -->
-            <AuthorBioPage 
-  author="Régis Rolnin"
-  role="Architecte de systèmes business & Créateur de la Méthode AIA™"
-  bio="Architecte de systèmes business pour PME ambitieuses. Créateur de la Méthode AIA™ : un système en 3 étapes pour structurer votre croissance, automatiser vos processus et intégrer l'IA utile."
-  image="/images/regis-portrait.png"
-  social={{
-    linkedin: 'https://www.linkedin.com/in/regisrolnin',
-    twitter: 'https://x.com/RegisRolnin',
-    youtube: 'https://www.youtube.com/@RegisRolnin',
-  }}
-  variant="hero"
-/>
 
+            <AuthorBio
+              author="Régis Rolnin"
+              role="Consultant en Stratégie, Croissance Digitale & Automatisation"
+              bio="Consultant en stratégie et croissance digitale, j’accompagne les PME à clarifier leur vision, attirer les bons clients et automatiser leur marketing grâce à la Méthode AIA™."
+              image="/images/regis-portrait.png"
+              social={{
+                linkedin: 'https://www.linkedin.com/in/regisrolnin',
+                twitter: 'https://x.com/RegisRolnin',
+                youtube: 'https://www.youtube.com/@RegisRolnin',
+              }}
+              variant="hero"
+            />
 
-            <!-- Photo Section (no frame, like your other section) -->
             <div class="animate-slide-right" style="animation-delay: 0.2s;">
               <Image
                 src={regisPortrait}
-                alt="Régis Rolnin — Architecte de systèmes business, créateur de la Méthode AIA™"
+                alt="Régis Rolnin — Consultant en Stratégie, Croissance Digitale & Automatisation, créateur de la Méthode AIA™"
                 widths={[360, 540, 720, 900, 1200, 1340]}
                 sizes="(min-width:1024px) 520px, 92vw"
                 quality={90}
@@ -61,7 +56,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
       </div>
     </section>
 
-    <!-- Section 1 - Mon parcours -->
     <section class="py-20 lg:py-32 bg-white">
       <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto">
@@ -72,27 +66,18 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
               </svg>
               <span class="text-sm font-semibold text-blue-600">Mon Parcours</span>
             </div>
-
             <h2 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-8 font-crimson">
-              Plus de 10 ans à la croisée de
-              <span class="text-gradient-gold block">trois mondes</span>
+              Plus de 10 ans à la croisée de <span class="text-gradient-gold block">trois mondes</span>
             </h2>
           </div>
-
           <div class="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-10 shadow-lg hover-lift transition-all duration-500">
             <div class="space-y-8 text-lg text-gray-700 font-crimson leading-relaxed">
               <p>
-                Depuis plus de dix ans, je travaille à la croisée de trois mondes : 
-                <strong>le marketing digital, l'automatisation des process et les systèmes d'information.</strong>
+                Depuis plus de dix ans, je travaille à la croisée de trois mondes : <strong>le marketing digital, l'automatisation des process et les systèmes d'information.</strong>
               </p>
-              
               <p>
-                J'ai accompagné des entrepreneurs et des dirigeants à construire des stratégies robustes, 
-                à mettre en place des solutions technologiques efficaces, et à dépasser le chaos opérationnel 
-                qui freine leur croissance.
+                J'ai accompagné des entrepreneurs et des dirigeants à construire des stratégies robustes, à mettre en place des solutions technologiques efficaces, et à dépasser le chaos opérationnel qui freine leur croissance.
               </p>
-
-              <!-- Key insight box -->
               <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
                 <div class="flex items-start">
                   <svg class="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,8 +86,7 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
                   <div>
                     <h3 class="font-bold text-blue-900 mb-2">Constat clé :</h3>
                     <p class="text-blue-800">
-                      La plupart des PME ne manquent ni de compétences ni d'ambition, mais elles manquent 
-                      d'un système structuré pour transformer leurs efforts en résultats prévisibles.
+                      La plupart des PME ne manquent ni de compétences ni d'ambition, mais elles manquent d'un système structuré pour transformer leurs efforts en résultats prévisibles.
                     </p>
                   </div>
                 </div>
@@ -113,7 +97,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
       </div>
     </section>
 
-    <!-- Section 2 - Pourquoi la Méthode AIA -->
     <section class="py-20 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <div class="container mx-auto px-6">
         <div class="max-w-6xl mx-auto">
@@ -124,38 +107,27 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
               </svg>
               <span class="text-sm font-semibold text-amber-600">La Méthode AIA™</span>
             </div>
-
             <h2 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-8 font-crimson">
-              Pourquoi j'ai créé la
-              <span class="text-gradient-gold block">Méthode AIA™ ?</span>
+              Pourquoi j'ai créé la <span class="text-gradient-gold block">Méthode AIA™ ?</span>
             </h2>
           </div>
-
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Content -->
             <div class="space-y-8">
               <div class="bg-white/80 backdrop-blur-sm border border-white/30 rounded-2xl p-8 shadow-lg">
                 <p class="text-lg text-gray-700 font-crimson leading-relaxed mb-6">
-                  Après des années d'observation et d'implémentation terrain, j'ai conçu la 
-                  <strong>Méthode AIA™ (Aligner – Attirer – Automatiser).</strong>
+                  Après des années d'observation et d'implémentation terrain, j'ai conçu la <strong>Méthode AIA™ (Aligner – Attirer – Automatiser).</strong>
                 </p>
-                
                 <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
                   <p class="font-semibold text-amber-900 mb-2">Son objectif :</p>
                   <p class="text-amber-800">Simplifier la croissance en trois étapes clés</p>
                 </div>
               </div>
-
-              <!-- Philosophy -->
               <div class="bg-white/80 backdrop-blur-sm border border-white/30 rounded-2xl p-8 shadow-lg">
                 <p class="text-lg text-gray-700 font-crimson leading-relaxed text-center">
-                  <strong>Pas de solutions gadgets. Pas de patchwork d'outils.</strong><br>
-                  Un système clair, intégré et efficace.
+                  <strong>Pas de solutions gadgets. Pas de patchwork d'outils.</strong><br> Un système clair, intégré et efficace.
                 </p>
               </div>
             </div>
-
-            <!-- 3 Steps Visual -->
             <div class="space-y-6">
               <div class="bg-white/80 backdrop-blur-sm border border-white/30 rounded-2xl p-6 shadow-lg hover-lift transition-all duration-300">
                 <div class="flex items-center mb-4">
@@ -166,7 +138,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
                 </div>
                 <p class="text-gray-600 font-crimson">Votre offre et votre positionnement</p>
               </div>
-
               <div class="bg-white/80 backdrop-blur-sm border border-white/30 rounded-2xl p-6 shadow-lg hover-lift transition-all duration-300">
                 <div class="flex items-center mb-4">
                   <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
@@ -176,7 +147,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
                 </div>
                 <p class="text-gray-600 font-crimson">Un moteur d'acquisition structuré et automatisé</p>
               </div>
-
               <div class="bg-white/80 backdrop-blur-sm border border-white/30 rounded-2xl p-6 shadow-lg hover-lift transition-all duration-300">
                 <div class="flex items-center mb-4">
                   <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
@@ -192,7 +162,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
       </div>
     </section>
 
-    <!-- Section 3 - Mes convictions -->
     <section class="py-20 lg:py-32 bg-white">
       <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto text-center">
@@ -202,12 +171,9 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
             </svg>
             <span class="text-sm font-semibold text-purple-600">Mes Convictions</span>
           </div>
-
           <h2 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-16 font-crimson">
-            Ce en quoi je crois
-            <span class="text-gradient-gold block">profondément</span>
+            Ce en quoi je crois <span class="text-gradient-gold block">profondément</span>
           </h2>
-
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover-lift transition-all duration-500">
               <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
@@ -219,7 +185,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
                 Je crois que <strong>la croissance ne doit pas rimer avec complexité.</strong>
               </p>
             </div>
-
             <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover-lift transition-all duration-500">
               <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,7 +195,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
                 Je crois que <strong>l'IA doit être un levier stratégique, pas une mode.</strong>
               </p>
             </div>
-
             <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover-lift transition-all duration-500">
               <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +210,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
       </div>
     </section>
 
-    <!-- Section 4 - Ma mission -->
     <section class="py-20 lg:py-32 bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto text-center">
@@ -256,18 +219,13 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
             </svg>
             <span class="text-sm font-semibold text-green-600">Ma Mission</span>
           </div>
-
           <h2 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-8 font-crimson">
-            Une mission
-            <span class="text-gradient-gold block">simple et claire</span>
+            Une mission <span class="text-gradient-gold block">simple et claire</span>
           </h2>
-
           <div class="bg-white/80 backdrop-blur-sm border border-white/30 rounded-3xl p-12 shadow-2xl hover-lift transition-all duration-500">
             <p class="text-2xl text-gray-700 font-crimson leading-relaxed mb-8">
-              Ma mission est simple : permettre aux <strong>PME francophones ambitieuses</strong> 
-              d'accélérer leur croissance grâce à un système clair et durable.
+              Ma mission est simple : permettre aux <strong>PME francophones ambitieuses</strong> d'accélérer leur croissance grâce à un système clair et durable.
             </p>
-            
             <div class="flex items-center justify-center">
               <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
                 <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,9 +238,7 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
       </div>
     </section>
 
-    <!-- Section 5 - Et vous ? -->
     <section class="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800">
-      <!-- Floating elements for dark background -->
       <div class="absolute top-20 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl float-slow"></div>
       <div class="absolute bottom-20 right-10 w-80 h-80 bg-white/5 rounded-full blur-3xl float-medium"></div>
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white/10 rounded-full blur-2xl float-fast"></div>
@@ -295,17 +251,12 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
             </svg>
             <span class="text-sm font-semibold text-white">Et Vous ?</span>
           </div>
-
           <h2 class="text-4xl lg:text-6xl font-bold text-white mb-8 font-crimson">
-            Prêt à transformer
-            <span class="text-amber-300 block">votre approche ?</span>
+            Prêt à transformer <span class="text-amber-300 block">votre approche ?</span>
           </h2>
-
           <p class="text-xl text-blue-100 mb-12 font-crimson leading-relaxed">
-            Vous souhaitez mettre fin aux efforts dispersés, aux process chronophages et à l'acquisition fragile ?<br>
-            Découvrez comment appliquer la Méthode AIA™ à votre entreprise dès maintenant.
+            Vous souhaitez mettre fin aux efforts dispersés, aux process chronophages et à l'acquisition fragile ?<br> Découvrez comment appliquer la Méthode AIA™ à votre entreprise dès maintenant.
           </p>
-
           <a
             href="/travailler-avec-moi"
             class="inline-flex items-center px-12 py-6 bg-white text-blue-600 font-bold rounded-full hover:bg-blue-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-xl"
@@ -315,8 +266,6 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
           </a>
-
-          <!-- Trust indicators -->
           <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 text-blue-100">
             <div class="flex items-center">
               <svg class="w-5 h-5 mr-2 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -347,33 +296,94 @@ import AuthorBioPage from '../components/AuthorBioPage.astro';
 
 <style>
   /* Floating animations */
-  .float-slow { animation: float-slow 8s ease-in-out infinite; }
-  .float-medium { animation: float-medium 6s ease-in-out infinite; }
-  .float-fast { animation: float-fast 4s ease-in-out infinite; }
+  .float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+  .float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+  }
+  .float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+  }
 
   @keyframes float-slow {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(2deg); }
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(2deg);
+    }
   }
+
   @keyframes float-medium {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(-1deg); }
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(-1deg);
+    }
   }
+
   @keyframes float-fast {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(1deg); }
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(1deg);
+    }
   }
 
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-50px);} to { opacity: 1; transform: translateX(0);} }
-  @keyframes slideInFromRight { from { opacity: 0; transform: translateX(50px);} to { opacity: 1; transform: translateX(0);} }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-  .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
-  .animate-slide-left { animation: slideInFromLeft 0.8s ease-out forwards; }
-  .animate-slide-right { animation: slideInFromRight 0.8s ease-out forwards; }
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
-  .hover-lift { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-  .hover-lift:hover { transform: translateY(-8px) scale(1.02); }
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slideInFromRight 0.8s ease-out forwards;
+  }
+
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
 
   .text-gradient-gold {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #f59e0b 100%);

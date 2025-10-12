@@ -11,9 +11,9 @@ export interface Props {
 }
 
 const { 
-  title = "Growth Expert", 
-  description = "Libérez le potentiel de votre PME avec la Méthode AIA™",
-  image = "/images/regis.png",
+  title = "Régis Rolnin | Consultant en Stratégie, Croissance Digitale & Automatisation", 
+  description = "Régis Rolnin aide les PME à structurer leur stratégie digitale, automatiser leur acquisition et accélérer leur croissance grâce à la Méthode AIA™.",
+  image = "/images/regis-portrait.png",
   type = "website",
   noindex = false
 } = Astro.props;
@@ -28,106 +28,34 @@ const socialImage = new URL(image, Astro.site);
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Silktide Consent Manager -->
-    <link rel="stylesheet" id="silktide-consent-manager-css" href="/cookie-banner/silktide-consent-manager.css">
-    <script src="/cookie-banner/silktide-consent-manager.js" is:inline></script>
-    <script is:inline>
-    if (typeof window !== 'undefined' && window.silktideCookieBannerManager) {
-      window.silktideCookieBannerManager.updateCookieBannerConfig({
-      background: {
-        showBackground: true
-      },
-      cookieIcon: {
-        position: "bottomLeft"
-      },
-      cookieTypes: [
-        {
-          id: "cookies_necessaires",
-          name: "Cookies nécessaires",
-          description: "<p>Ces cookies sont indispensables au bon fonctionnement du site et ne peuvent pas être désactivés.</p>",
-          required: true,
-          onAccept: function() {
-            console.log("Cookies nécessaires activés");
-          }
-        },
-        {
-          id: "cookies_analytiques",
-          name: "Cookies analytiques",
-          description: "<p>Ces cookies nous aident à comprendre comment vous utilisez notre site, afin d'améliorer votre expérience.</p>",
-          required: false,
-          onAccept: function() {
-            // Active Umami uniquement après consentement
-            const script = document.createElement("script");
-            script.setAttribute("async", "");
-            script.setAttribute("defer", "");
-            script.setAttribute("data-website-id", "e1e5657a-1d06-4b35-8597-7e1092b92e5b");
-            script.setAttribute("src", "https://cloud.umami.is/script.js");
-            script.setAttribute("data-silktide-category", "analytics");
-            document.head.appendChild(script);
-          },
-          onReject: function() {
-            console.log("Cookies analytiques refusés");
-          }
-        }
-      ],
-      text: {
-        banner: {
-          description: "<p>Nous utilisons des cookies pour améliorer votre expérience. <a href=\"https://www.regisrolnin.com/cookie-policy\" target=\"_blank\">Politique de cookies</a>.</p>",
-          acceptAllButtonText: "Tout accepter",
-          acceptAllButtonAccessibleLabel: "Tout accepter",
-          rejectNonEssentialButtonText: "Refuser les cookies facultatifs",
-          rejectNonEssentialButtonAccessibleLabel: "Refuser les cookies facultatifs",
-          preferencesButtonText: "Personnaliser",
-          preferencesButtonAccessibleLabel: "Personnaliser les préférences"
-        },
-        preferences: {
-          title: "Préférences de cookies",
-          description: "<p>Nous respectons votre vie privée. Vous pouvez choisir d'accepter ou non certains types de cookies.</p>",
-          creditLinkText: "Propulsé par Silktide",
-          creditLinkAccessibleLabel: "Propulsé par Silktide"
-        }
-      },
-      position: {
-        banner: "bottomLeft"
-      }
-      });
-    }
-    </script>
-    
+
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    
-    <!-- SEO Meta Tags -->
+
+    <!-- SEO Meta -->
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="author" content="Régis Rolnin" />
-    <meta name="keywords" content="croissance PME, méthode AIA, automatisation, marketing digital, intelligence artificielle" />
-    
+    <meta name="keywords" content="stratégie digitale, croissance PME, automatisation, IA, méthode AIA, marketing digital" />
+
     <!-- Open Graph -->
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImage} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:site_name" content="Growth Expert" />
+    <meta property="og:site_name" content="Régis Rolnin — Consultant en Stratégie Digitale" />
     <meta property="og:locale" content="fr_FR" />
-    
-    <!-- Twitter Card -->
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    
-    <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Growth Expert Blog" href="/rss.xml" />
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <title>{title}</title>
-    
+
     <!-- Tracking Scripts -->
     <TrackingScripts />
-    
     <slot name="head" />
   </head>
   <body>
