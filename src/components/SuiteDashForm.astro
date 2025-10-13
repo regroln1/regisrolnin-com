@@ -44,16 +44,16 @@ const loadingId = `loading-${formId}`;
 
   <!-- SuiteDash Form Iframe -->
   <iframe
-    id={formId}
-    src={formUrl}
-    width="100%"
-    height={height}
-    frameborder="0"
-    scrolling="auto"
-    class="w-full border-none rounded-xl opacity-0 transition-opacity duration-700 ease-in-out"
-    title="Formulaire de contact"
-    loading="lazy"
-  ></iframe>
+  id={formId}
+  src={formUrl}
+  width="100%"
+  height={height}
+  style="border: none; overflow: auto;"
+  class="w-full border-none rounded-xl opacity-0 transition-opacity duration-700 ease-in-out"
+  title="Formulaire de contact"
+  loading="lazy"
+></iframe>
+
 
   <!-- Trust Text -->
   {trustText && (
