@@ -5,18 +5,18 @@ import type { BlogConfig } from '../types/blog';
  */
 export const blogConfig: BlogConfig = {
   // Informations du site
-  siteName: 'Régis Rolnin | Consultant en Stratégie,Croissance Digitale  Automatisation',
+  siteName: 'Régis Rolnin | Consultant en Stratégie, Croissance Digitale & Automatisation',
   siteUrl: 'https://regisrolnin.com',
   defaultAuthor: 'Régis Rolnin',
   defaultImage: '/images/regis.png',
-  
+
   // Pagination
   postsPerPage: 12,
-  
+
   // Fonctionnalités
   enableRSS: true,
   enableSitemap: true,
-  
+
   // Configuration auto-génération
   autoGeneration: {
     generateReadingTime: true,
@@ -24,9 +24,10 @@ export const blogConfig: BlogConfig = {
     generateRelatedPosts: true,
     generateKeywords: false,
     maxRelatedPosts: 4,
-    excerptLength: 150
-  }
+    excerptLength: 150,
+  },
 };
+
 
 /**
  * Configuration des catégories/tags avec couleurs
