@@ -4,7 +4,7 @@ description: "Découvrez les stratégies essentielles pour accélérer la croiss
 pubDate: 2025-01-15
 author: "Régis Rolnin"
 authorBio: "Expert en growth marketing avec plus de 10 ans d'expérience dans l'accompagnement de startups et PME vers une croissance exponentielle."
-authorRole: "Régis Rolnin | Consultant en Stratégie,Croissance Digitale  Automatisation & Consultant"
+authorRole: "Régis Rolnin | Consultant en Stratégie, Croissance Digitale & Automatisation"
 authorSocial:
   linkedin: "https://linkedin.com/in/regis-rolnin"
   twitter: "https://twitter.com/regisrolnin"

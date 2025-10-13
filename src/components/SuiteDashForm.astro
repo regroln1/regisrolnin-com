@@ -65,7 +65,7 @@ const loadingId = `loading-${formId}`;
   )}
 </div>
 
-<script define:vars={{ formId, loadingId }}>
+<script is:inline define:vars={{ formId, loadingId }}>
   document.addEventListener('DOMContentLoaded', function() {
     const iframe = document.getElementById(formId);
     const loading = document.getElementById(loadingId);
