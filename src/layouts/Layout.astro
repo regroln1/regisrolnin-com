@@ -20,10 +20,13 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
+
+// Couleur sombre de votre design pour la barre de navigateur mobile
+const themeColor = "#080f1f"; 
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -32,21 +35,22 @@ const socialImage = new URL(image, Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
 
-    <!-- SEO Meta -->
+    <meta name="theme-color" content={themeColor} />
+
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="author" content="Régis Rolnin" />
     <meta name="keywords" content="stratégie digitale, croissance PME, automatisation, IA, méthode AIA, marketing digital" />
+    
+    <meta name="image" content={socialImage} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImage} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:site_name" content="Régis Rolnin — Consultant en Stratégie Digitale" />
+    <meta property="og:site_name" content="Régis Rolnin — Consultant en Stratégie, Croissance Digitale & Automatisation" />
     <meta property="og:locale" content="fr_FR" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -54,7 +58,6 @@ const socialImage = new URL(image, Astro.site);
 
     <title>{title}</title>
 
-    <!-- Tracking Scripts -->
     <TrackingScripts />
     <slot name="head" />
   </head>
