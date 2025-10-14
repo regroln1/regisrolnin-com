@@ -1,6 +1,6 @@
 /* TEAM */
-Developer: Régis Rolnin
-Role: Consultant en Stratégie, Croissance Digitale & Automatisation
+Developer: Regis Rolnin
+Role: Consultant en Strategie, Croissance Digitale & Automatisation
 Website: https://regisrolnin.com
 
 /* SITE */
@@ -11,9 +11,8 @@ Hosting: Netlify
 Language: French (fr-FR)
 
 /* BRAND */
-Method: Méthode AIA™ (Aligner, Attirer, Automatiser)
-Mission: Aider les PME à structurer leur stratégie digitale et accélérer leur croissance avec l’IA
+Method: Methode AIA (Aligner, Attirer, Automatiser)
+Mission: Aider les PME a structurer leur strategie digitale et accelerer leur croissance avec l'IA
 
 /* CREDITS */
-Design & Development: Régis Rolnin – Growth Expert
-
+Design & Development: Regis Rolnin - Growth Expert
