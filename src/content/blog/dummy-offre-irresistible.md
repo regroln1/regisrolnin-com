@@ -1,9 +1,15 @@
 ---
-title: "Pourquoi votre offre ne convertit pas (et comment corriger)"
-description: "Analyse complète des erreurs les plus fréquentes qui empêchent une offre de vendre, avec une méthode claire pour améliorer vos conversions en 30 jours."
+title: "Pourquoi votre offre ne convertit pas (et comment la rendre irrésistible en 30 jours)"
+description: "Analyse complète des erreurs les plus fréquentes qui empêchent une offre de vendre, avec une méthode claire, illustrée et actionnable pour améliorer vos conversions en 30 jours."
 pubDate: 2025-02-07
 
 author: "Régis Rolnin"
+authorBio: "Consultant en stratégie, croissance digitale et automatisation, spécialisé dans l’accompagnement des PME."
+authorRole: "Régis Rolnin | Consultant Stratégie & Croissance"
+authorSocial:
+  linkedin: "https://linkedin.com/in/regis-rolnin"
+  twitter: "https://twitter.com/regisrolnin"
+  website: "https://regisrolnin.com"
 
 tags: ["offre", "conversion", "marketing", "croissance"]
 category: "strategie"
@@ -14,17 +20,31 @@ excerpt: "Votre offre attire mais ne vend pas ? Découvrez les vraies raisons et
 
 draft: false
 
-quickAnswer: "Dans 80% des cas, une offre ne convertit pas à cause d’un manque de clarté, de preuve ou de ciblage. Corrigez d’abord ces trois points avant d’optimiser votre acquisition."
-
-seoKeywords: ["offre irrésistible", "conversion", "marketing PME", "vente"]
+quickAnswer: "Dans la majorité des cas, une offre ne convertit pas à cause d’un manque de clarté, de preuve ou de ciblage. En corrigeant ces trois leviers, vous pouvez relancer vos ventes rapidement."
 
 relatedPosts:
   - "3-erreurs-acquisition-digitale"
   - "comment-structurer-offre-irresistible"
 
-readingTime: 8
-wordCount: 1850
-lastModified: 2026-02-07
+faq:
+  - question: "Pourquoi mon offre attire mais ne vend pas ?"
+    answer: "Parce qu’elle manque généralement de clarté, de preuve ou d’un ciblage précis. Le prospect comprend l’intérêt, mais ne perçoit pas assez de valeur pour passer à l’action."
+  - question: "Dois-je baisser mes prix pour vendre plus ?"
+    answer: "Rarement. Le problème vient plus souvent du positionnement et du message que du tarif."
+  - question: "Combien de temps faut-il pour améliorer une offre ?"
+    answer: "Avec une méthode structurée, les premiers résultats apparaissent en 4 à 8 semaines."
+  - question: "Faut-il tout refaire pour repartir ?"
+    answer: "Non. Il vaut mieux optimiser progressivement les éléments clés avant de reconstruire."
+
+glossary:
+  - term: "Promesse"
+    definition: "Résultat concret que le client obtient en achetant votre offre."
+  - term: "Preuve"
+    definition: "Éléments qui renforcent la crédibilité : cas clients, chiffres, démonstrations."
+  - term: "CTA"
+    definition: "Call To Action : appel à l’action principal."
+  - term: "Positionnement"
+    definition: "Manière dont votre offre se distingue dans l’esprit du marché."
 
 featured: true
 priority: high
@@ -43,35 +63,43 @@ schemaType: BlogPosting
 
 Vous avez du trafic.  
 Vous avez des prospects intéressés.  
-Vous avez parfois même des rendez-vous.
+Parfois même des rendez-vous.
 
-Mais pourtant… votre offre ne vend pas.
+Mais votre offre ne vend pas.
 
-Dans cet article, nous allons analyser **pourquoi une offre stagne**, puis comment la transformer en une proposition claire, crédible et désirable.
+![Analyse d’une offre commerciale](https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200)
+*Analyse d’une proposition commerciale – Source : Unsplash*
+
+Dans cet article, nous allons voir **pourquoi une offre stagne**, puis comment la transformer en une proposition claire, crédible et désirable.
 
 ---
 
 ## Pourquoi une offre ne convertit pas
 
-Dans la majorité des cas, le problème n’est ni le prix, ni la concurrence, ni le marché.
+Dans plus de 70 % des cas, le problème n’est ni le marché ni la concurrence.
 
-Il vient de trois éléments fondamentaux.
+Il vient de trois leviers fondamentaux.
+
+---
 
 ### 1. Une promesse trop floue
 
 “Booster votre croissance”, “améliorer votre visibilité”, “optimiser vos ventes”…
 
-Ces phrases ne donnent aucune image concrète dans l’esprit du prospect.
+Ces phrases ne créent aucune image concrète.
 
-Une bonne promesse doit contenir :
+![Travail sur la proposition de valeur](https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200)
+*Travail sur la proposition de valeur – Unsplash*
+
+Une bonne promesse contient :
 
 - Un résultat clair  
-- Un délai réaliste  
+- Un délai crédible  
 - Un mécanisme compréhensible  
 
 Exemple :
 
-> “Augmenter vos leads qualifiés de 30% en 90 jours grâce à un système automatisé.”
+> “Générer 20 leads qualifiés par mois en 90 jours grâce à un système automatisé.”
 
 ---
 
@@ -79,9 +107,10 @@ Exemple :
 
 Quand vous parlez à tout le monde, vous ne parlez à personne.
 
-Un dirigeant de PME, un freelance et une startup n’ont pas les mêmes priorités.
+![Définition du client idéal](https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200)
+*Définition du client idéal – Unsplash*
 
-Votre message doit refléter précisément :
+Votre message doit refléter :
 
 - Le niveau de maturité
 - Le contexte business
@@ -91,34 +120,35 @@ Votre message doit refléter précisément :
 
 ### 3. Un manque de preuve
 
-Même avec une bonne promesse, sans preuve, la confiance ne vient pas.
+Même avec une bonne promesse, sans preuve, la confiance ne s’installe pas.
+
+![Présentation de résultats](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200)
+*Présentation de résultats – Unsplash*
 
 Les prospects veulent voir :
 
-- Des résultats concrets
+- Des résultats mesurables
 - Des exemples réels
 - Une méthode claire
-
-Sans cela, ils hésitent.
 
 ---
 
 > 💡 **Conseil terrain**  
-> Si vous devez expliquer votre offre plus de 30 secondes à chaque appel, c’est qu’elle n’est pas assez claire.
+> Si vous devez expliquer votre offre plus de 30 secondes à chaque appel, elle n’est pas assez claire.
 
 ---
 
-## Les 5 signaux d’alerte à surveiller
+## Les 5 signaux d’alerte
 
 Voici les symptômes les plus fréquents :
 
 1. Beaucoup d’intérêt, peu d’engagement  
-2. Des objections répétitives  
-3. Des cycles de vente longs  
-4. Des comparaisons permanentes  
-5. Des abandons après devis  
+2. Objections répétitives  
+3. Cycles de vente longs  
+4. Comparaisons permanentes  
+5. Abandons après devis  
 
-Si vous reconnaissez au moins deux points, votre offre mérite une refonte.
+Si vous en reconnaissez deux ou plus, votre offre mérite une refonte.
 
 ---
 
@@ -126,13 +156,11 @@ Si vous reconnaissez au moins deux points, votre offre mérite une refonte.
 
 ### Aligner : clarifier le socle
 
-Avant toute optimisation, posez-vous ces questions :
+Posez-vous ces questions :
 
 - Quel problème précis je résous ?
 - Pour qui exactement ?
 - Avec quel résultat mesurable ?
-
-Sans ces réponses, toute action marketing sera inefficace.
 
 ---
 
@@ -140,21 +168,19 @@ Sans ces réponses, toute action marketing sera inefficace.
 
 Une offre performante :
 
-- Parle du problème avant de parler de la solution
-- Montre que vous comprenez la situation réelle
+- Parle du problème avant la solution
+- Montre que vous comprenez la situation
 - Projette vers un futur souhaitable
 
 ---
 
 ### Automatiser : simplifier l’achat
 
-Plus le parcours est simple, plus la conversion augmente.
-
 Objectif :
 
 - Un message principal
 - Un CTA principal
-- Un chemin principal
+- Un parcours simple
 
 ---
 
@@ -162,102 +188,37 @@ Objectif :
 
 ### Semaine 1 — Diagnostic
 
-Analysez :
-
-- Votre page d’offre
-- Vos emails
-- Vos scripts commerciaux
-
-Notez toutes les incompréhensions.
-
----
+Analysez votre page, vos emails et vos scripts.
 
 ### Semaine 2 — Repositionnement
 
-Travaillez :
-
-- La promesse
-- La cible
-- Le message principal
-
-Testez une seule version.
-
----
+Travaillez la promesse et la cible.
 
 ### Semaine 3 — Ajout de preuve
 
-Ajoutez :
-
-- Cas client
-- Témoignage
-- Démonstration vidéo
-
----
+Ajoutez un cas client ou une démonstration.
 
 ### Semaine 4 — Optimisation
 
-Mesurez :
-
-- Taux de clic
-- Taux de rendez-vous
-- Taux de signature
-
-Ajustez.
+Mesurez et ajustez.
 
 ---
 
 > ✅ **À retenir**  
-> Une amélioration de 10% sur chaque étape peut doubler votre chiffre d’affaires.
+> Une amélioration de 10 % à chaque étape peut doubler votre chiffre d’affaires.
 
 ---
 
 ## Erreurs fréquentes
 
-### Erreur 1 : Copier la concurrence
+### Copier la concurrence
+→ Vous devenez invisible.
 
-Votre marché est saturé.  
-Copier = disparaître.
+### Multiplier les offres
+→ Vous créez de la confusion.
 
-### Erreur 2 : Multiplier les offres
-
-Trop de choix tue la décision.
-
-### Erreur 3 : Baisser les prix
-
-Le prix est rarement le vrai problème.
-
----
-
-## FAQ
-
-### Pourquoi mon offre attire mais ne vend pas ?
-
-Parce qu’elle manque soit de clarté, soit de preuve, soit de ciblage.
-
----
-
-### Dois-je refaire toute ma stratégie ?
-
-Non. Commencez par corriger l’offre avant tout.
-
----
-
-### Combien de temps pour voir des résultats ?
-
-Entre 4 et 8 semaines avec un travail sérieux.
-
----
-
-## Glossaire
-
-**Promesse**  
-Résultat concret vendu au prospect.
-
-**Preuve**  
-Éléments qui réduisent le risque perçu.
-
-**CTA**  
-Appel à l’action principal.
+### Baisser les prix
+→ Vous dévalorisez votre expertise.
 
 ---
 
@@ -265,11 +226,11 @@ Appel à l’action principal.
 
 Une offre qui convertit repose sur trois piliers :
 
-- Clarté
-- Crédibilité
-- Simplicité
+- Clarté  
+- Crédibilité  
+- Simplicité  
 
-Avant d’investir plus en acquisition, assurez-vous que votre offre mérite d’être vue.
+Avant d’acheter plus de trafic, assurez-vous que votre offre mérite d’être vue.
 
 ---
 
