@@ -1,6 +1,6 @@
 ---
-title: "Pourquoi votre offre ne convertit pas (et comment la rendre irrésistible en 30 jours)"
-description: "Analyse complète des erreurs les plus fréquentes qui empêchent une offre de vendre, avec une méthode claire, illustrée et actionnable pour améliorer vos conversions en 30 jours."
+title: "Pourquoi votre offre ne convertit pas (et comment corriger)"
+description: "Analyse complète des erreurs les plus fréquentes qui empêchent une offre de vendre, avec une méthode claire pour améliorer vos conversions en 30 jours."
 pubDate: 2025-02-07
 
 author: "Régis Rolnin"
