@@ -1,5 +1,5 @@
 ---
-title: "Pourquoi votre offre ne convertit pas (et comment la rendre irrésistible)"
+title: "Pourquoi votre offre ne convertit pas (et comment corriger)"
 description: "Analyse complète des erreurs les plus fréquentes qui empêchent une offre de vendre, avec une méthode claire pour améliorer vos conversions en 30 jours."
 pubDate: 2026-02-07
 
@@ -22,8 +22,8 @@ relatedPosts:
   - "3-erreurs-acquisition-digital"
   - "comment-structurer-offre-irresistible"
 
-readingTime: 0
-wordCount: 0
+readingTime: 8
+wordCount: 1850
 lastModified: 2026-02-07
 
 featured: true
