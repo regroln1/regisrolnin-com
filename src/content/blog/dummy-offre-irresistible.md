@@ -1,7 +1,7 @@
 ---
 title: "Pourquoi votre offre ne convertit pas (et comment corriger)"
 description: "Analyse complète des erreurs les plus fréquentes qui empêchent une offre de vendre, avec une méthode claire pour améliorer vos conversions en 30 jours."
-pubDate: 2026-02-07
+pubDate: 2025-02-07
 
 author: "Régis Rolnin"
 
@@ -19,7 +19,7 @@ quickAnswer: "Dans 80% des cas, une offre ne convertit pas à cause d’un manqu
 seoKeywords: ["offre irrésistible", "conversion", "marketing PME", "vente"]
 
 relatedPosts:
-  - "3-erreurs-acquisition-digital"
+  - "3-erreurs-acquisition-digitale"
   - "comment-structurer-offre-irresistible"
 
 readingTime: 8
