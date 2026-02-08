@@ -1,6 +1,6 @@
 ---
 title: "Pourquoi votre offre ne convertit pas en 30 jours"
-description: "Analyse des erreurs qui empêchent votre offre de vendre & méthode claire pour améliorer vos conversions en 30 jours."
+description: "Analyse des erreurs qui bloquent vos ventes, leviers de conversion prioritaires et méthode structurée pour booster vos ventes en 30 jours."
 
 pubDate: 2025-02-07
 
