@@ -1,0 +1,6 @@
+# security.txt - regisrolnin.com
+Contact: mailto:contact@regisrolnin.com
+Expires: 2026-10-14T00:00:00Z
+Preferred-Languages: fr, en
+Canonical: https://regisrolnin.com/.well-known/security.txt
+Policy: https://regisrolnin.com/politique-securite

@@ -7,14 +7,22 @@ import type { BlogPost } from "../../utils/blog";
 
 // Récupération des données
 const allPosts: BlogPost[] = await getAllPosts();
-const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas de paramètres
+const allTags: string[] = await getAllTags();
+
+// Configuration pagination
+const POSTS_PER_PAGE = 12;
+const currentPage = parseInt(Astro.url.searchParams.get('page') || '1');
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+const paginatedPosts = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 ---
 
 <Layout 
-  title="Blog - Growth Expert"
-  description="Articles et conseils pour faire croître votre PME"
+  title="Blog de Régis Rolnin | Consultant en Stratégie, Croissance Digitale & Automatisation"
+  description="Conseils, stratégies et retours d’expérience pour aider les PME à croître grâce à la Méthode AIA™ et à l’automatisation."
   type="website"
 >
+
   <Header />
   <main class="pt-20">
     <!-- Hero Section -->
@@ -29,13 +37,13 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
             <svg class="w-5 h-5 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
             </svg>
-            <span class="text-sm font-semibold text-blue-600">Blog Growth Expert</span>
+            <span class="text-sm font-semibold text-blue-600">Blog Régis Rolnin | Consultant en Stratégie, Croissance Digitale & Automatisation</span>
           </div>
 
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 mb-8 font-crimson animate-fade-in leading-tight" style="animation-delay: 0.1s;">
-            Stratégies et conseils pour
-            <span class="text-gradient-gold block">faire croître votre PME</span>
+            Le Blog de <span class="text-gradient-gold">Régis Rolnin</span>
           </h1>
+
 
           <p class="text-xl text-gray-600 mb-12 font-crimson leading-relaxed animate-fade-in max-w-3xl mx-auto" style="animation-delay: 0.2s;">
             Découvrez nos articles, guides pratiques et retours d'expérience pour accélérer la croissance de votre entreprise
@@ -92,7 +100,7 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
       <div class="container mx-auto px-6">
         <div class="max-w-7xl mx-auto">
           <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allPosts.map((post: BlogPost, index: number) => (
+            {paginatedPosts.map((post: BlogPost, index: number) => (
               <article
                 class="blog-post bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                 data-tags={post.data.tags.join(',')}
@@ -133,15 +141,17 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
                     <span class="font-crimson">{getReadingTime(post.body)} min de lecture</span>
                   </div>
 
-                  <a
-                    href={`/blog/${post.slug}`}
-                    class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors group"
-                  >
-                    Lire l'article
-                    <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </a>
+                  
+                    <a
+                  href={`/blog/${post.slug}`}
+                  class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors group"
+                >
+                Lire l'article
+                <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+              </a>
+
                 </div>
               </article>
             ))}
@@ -156,6 +166,39 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
               <p class="text-gray-500 font-crimson">Essayez de modifier vos critères de recherche ou de filtrage.</p>
             </div>
           </div>
+
+          <!-- Navigation Pagination -->
+          <nav id="pagination-nav" class="flex justify-center items-center gap-4 mt-16">
+            {currentPage > 1 && (
+              <a 
+                href={`/blog?page=${currentPage - 1}`}
+                class="group inline-flex items-center px-8 py-4 bg-white rounded-full shadow-md hover:shadow-xl transition-all duration-300 text-navy-900 font-semibold border border-gray-200 hover:border-blue-300"
+              >
+                <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Précédent
+              </a>
+            )}
+            
+            <div class="px-6 py-3 bg-blue-100 rounded-full">
+              <span class="text-blue-600 font-bold">{currentPage}</span>
+              <span class="text-gray-400 mx-2">/</span>
+              <span class="text-gray-600">{totalPages}</span>
+            </div>
+            
+            {currentPage < totalPages && (
+              <a 
+                href={`/blog?page=${currentPage + 1}`}
+                class="group inline-flex items-center px-8 py-4 bg-white rounded-full shadow-md hover:shadow-xl transition-all duration-300 text-navy-900 font-semibold border border-gray-200 hover:border-blue-300"
+              >
+                Suivant
+                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            )}
+          </nav>
         </div>
       </div>
     </section>
@@ -169,12 +212,15 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
     const tagFilters = document.querySelectorAll<HTMLButtonElement>('.tag-filter');
     const postsGrid = document.getElementById('posts-grid');
     const noResults = document.getElementById('no-results');
+    const paginationNav = document.getElementById('pagination-nav');
     const allPosts = document.querySelectorAll<HTMLElement>('.blog-post');
 
     let currentTag = 'all';
     let currentSearch = '';
+    let filterActive = false;
 
     function filterPosts() {
+      filterActive = true;
       let visibleCount = 0;
 
       allPosts.forEach((post) => {
@@ -197,6 +243,11 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
         }
       });
 
+      // Masquer la pagination quand un filtre est actif
+      if (paginationNav) {
+        paginationNav.style.display = filterActive ? 'none' : 'flex';
+      }
+
       if (visibleCount === 0) {
         noResults?.classList.remove('hidden');
         postsGrid?.classList.add('hidden');
@@ -208,6 +259,7 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
 
     searchInput?.addEventListener('input', (e) => {
       currentSearch = (e.target as HTMLInputElement).value;
+      filterActive = currentSearch !== '';
       filterPosts();
     });
 
@@ -222,6 +274,7 @@ const allTags: string[] = await getAllTags(); // Fix: getAllTags() ne prend pas 
         button.classList.remove('bg-gray-100', 'text-gray-700');
 
         currentTag = button.dataset.tag || 'all';
+        filterActive = currentTag !== 'all';
         filterPosts();
       });
     });

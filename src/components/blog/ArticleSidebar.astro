@@ -1,0 +1,40 @@
+---
+import TableOfContents from './TableOfContents.astro';
+import SocialShare from './SocialShare.astro';
+import GlossarySidebar from './GlossarySidebar.astro';
+import type { TOCItem } from "../../utils/blog";
+
+interface Props {
+  toc: TOCItem[];
+  glossary?: { term: string; definition: string }[];
+  tags?: string[];
+  currentSlug?: string;
+  title?: string;
+}
+
+const {
+  toc,
+  glossary = [],
+  tags = [],
+  currentSlug = '',
+  title = '',
+} = Astro.props as Props;
+---
+
+<aside class="lg:col-span-1 order-2 lg:order-1">
+  <div class="sticky top-32 space-y-6">
+    
+    <!-- 📖 Table des matières (H2 uniquement) -->
+    <TableOfContents items={toc} />
+    
+    <!-- 📘 Glossaire collapsible -->
+    {glossary.length > 0 && (
+      <GlossarySidebar terms={glossary} maxPreview={3} />
+    )}
+    
+
+    
+    <!-- 🤝 Partage social (X + LinkedIn + Email + Copier) -->
+    <SocialShare slug={currentSlug} title={title} />
+  </div>
+</aside>

@@ -1,0 +1,18 @@
+/* TEAM */
+Developer: Regis Rolnin
+Role: Consultant en Strategie, Croissance Digitale & Automatisation
+Website: https://regisrolnin.com
+
+/* SITE */
+Last update: 2025-10-14
+Standards: HTML5, CSS3, Astro, Tailwind, Markdown
+Components: SuiteDash, n8n, Airtable, Netlify
+Hosting: Netlify
+Language: French (fr-FR)
+
+/* BRAND */
+Method: Methode AIA (Aligner, Attirer, Automatiser)
+Mission: Aider les PME a structurer leur strategie digitale et accelerer leur croissance avec l'IA
+
+/* CREDITS */
+Design & Development: Regis Rolnin - Growth Expert

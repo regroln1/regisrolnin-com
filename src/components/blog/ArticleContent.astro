@@ -1,0 +1,313 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<article class={`article-content ${className}`}>
+  <slot />
+</article>
+
+<!-- Script pour générer automatiquement les IDs sur les titres -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = document.querySelectorAll('.article-content h2, .article-content h3, .article-content h4');
+    
+    headings.forEach((heading) => {
+      const text = heading.textContent?.trim() || '';
+      
+      // Fonction pour supprimer les accents
+      const removeAccents = (str: string) => {
+        return str
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/æ/g, 'ae')
+          .replace(/œ/g, 'oe')
+          .replace(/ç/g, 'c');
+      };
+      
+      const id = removeAccents(text)
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+      
+      if (id) {
+        heading.id = id;
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  .article-content {
+    @apply max-w-none;
+  }
+
+  /* ===================================
+     TYPOGRAPHY DE BASE - OPTIMISÉE
+  =================================== */
+  
+  .article-content p {
+    @apply font-crimson text-gray-700 leading-[1.5] text-lg mb-6;
+    text-align: left;
+  }
+
+  .article-content > p:first-of-type {
+    @apply text-xl leading-[1.6] font-medium text-gray-800 mb-8;
+  }
+
+  /* ===================================
+     HEADINGS - H2 BIEN VISIBLES
+  =================================== */
+  
+  .article-content h1,
+  .article-content h2,
+  .article-content h3,
+  .article-content h4,
+  .article-content h5,
+  .article-content h6 {
+    @apply font-crimson text-navy-900 font-bold;
+    scroll-margin-top: 120px;
+    position: relative;
+  }
+
+  .article-content h1 {
+    @apply text-4xl md:text-5xl mb-10 mt-16 leading-[1.2];
+  }
+
+  .article-content h2 {
+    @apply text-3xl md:text-4xl mb-6 mt-16 leading-[1.3] pb-2;
+    color: #1a202c;
+    border-bottom: 2px solid #e5e7eb;
+    display: inline-block;
+    width: auto;
+  }
+
+  .article-content h2::before,
+  .article-content h3::before {
+    content: none;
+  }
+
+  .article-content h3 {
+    @apply text-xl md:text-2xl mb-4 mt-4 leading-[1.3] py-2;
+  }
+
+  .article-content h4 {
+    @apply text-xl md:text-2xl mb-5 mt-10 leading-[1.4] text-emerald-700 font-semibold;
+  }
+
+  .article-content h5 {
+    @apply text-lg md:text-xl mb-4 mt-8 leading-[1.4] text-blue-700 font-semibold;
+  }
+
+  .article-content h6 {
+    @apply text-base md:text-lg mb-3 mt-6 leading-[1.4] text-gray-800 font-semibold;
+  }
+
+  /* ===================================
+     EMPHASIS & INLINE ELEMENTS
+  =================================== */
+  
+  .article-content strong {
+    @apply text-navy-900 font-bold bg-yellow-100 px-1.5 py-0.5 rounded;
+    box-shadow: 0 2px 4px rgba(251, 191, 36, 0.1);
+  }
+
+  .article-content em {
+    @apply italic text-gray-800;
+  }
+
+  .article-content mark {
+    @apply bg-amber-200 px-1 py-0.5 rounded;
+  }
+
+  /* ===================================
+     LINKS
+  =================================== */
+  
+  .article-content a {
+    @apply text-blue-600 font-semibold transition-all duration-200 relative;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .article-content a:hover {
+    @apply text-blue-700;
+    text-decoration-color: currentColor;
+  }
+
+  .article-content a::after {
+    content: '→';
+    @apply ml-1 inline-block transition-transform duration-200 opacity-70;
+  }
+
+  .article-content a:hover::after {
+    transform: translateX(3px);
+    @apply opacity-100;
+  }
+
+  /* ===================================
+     LISTS
+  =================================== */
+  
+  .article-content ul,
+  .article-content ol {
+    @apply mb-8 mt-6 space-y-3 pl-6;
+  }
+
+  .article-content li {
+    @apply font-crimson text-gray-700 leading-[1.8] text-lg;
+  }
+
+  .article-content ul li {
+    @apply pl-3 relative;
+  }
+
+  .article-content ul li::before {
+    content: '▸';
+    @apply absolute left-[-1.2rem] text-blue-500 font-bold text-xl;
+  }
+
+  .article-content ol {
+    counter-reset: item;
+    @apply list-none;
+  }
+
+  .article-content ol li {
+    counter-increment: item;
+    @apply pl-3 relative;
+  }
+
+  .article-content ol li::before {
+    content: counter(item) '.';
+    @apply absolute left-[-1.5rem] text-purple-600 font-bold;
+  }
+
+  /* ===================================
+     BLOCKQUOTES
+  =================================== */
+  
+  .article-content blockquote {
+    @apply border-l-4 border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-r-2xl my-10 font-crimson text-lg italic shadow-lg;
+    position: relative;
+  }
+
+  .article-content blockquote::before {
+    content: '"';
+    position: absolute;
+    left: 16px;
+    top: -8px;
+    font-size: 5rem;
+    color: #f59e0b;
+    opacity: 0.15;
+    font-family: Georgia, serif;
+    line-height: 1;
+    font-weight: bold;
+  }
+
+  .article-content blockquote p {
+    @apply mb-4 last:mb-0 text-gray-800 relative z-10;
+  }
+
+  .article-content blockquote cite {
+    @apply block mt-5 text-sm not-italic text-gray-600 font-semibold border-t border-amber-200 pt-4;
+  }
+
+  .article-content blockquote cite::before {
+    content: '— ';
+  }
+
+  /* ===================================
+     CODE BLOCKS
+  =================================== */
+  
+  .article-content code {
+    @apply bg-gray-100 px-2.5 py-1 rounded-md text-[0.9em] font-mono text-pink-600 border border-gray-200;
+    font-weight: 500;
+  }
+
+  .article-content pre {
+    @apply bg-navy-900 text-gray-100 rounded-2xl p-6 overflow-x-auto my-10 shadow-2xl border border-gray-700;
+    line-height: 1.6;
+  }
+
+  .article-content pre code {
+    @apply bg-transparent p-0 text-gray-100 border-0;
+    font-size: 0.95rem;
+  }
+
+  /* ===================================
+     TABLES
+  =================================== */
+  
+  .article-content table {
+    @apply w-full my-10 border-collapse rounded-2xl overflow-hidden shadow-lg;
+  }
+
+  .article-content thead {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white;
+  }
+
+  .article-content th {
+    @apply p-4 text-left font-bold text-sm uppercase tracking-wide;
+  }
+
+  .article-content td {
+    @apply p-4 border-b border-gray-200 bg-white;
+  }
+
+  .article-content tbody tr:hover {
+    @apply bg-blue-50;
+  }
+
+  /* ===================================
+     IMAGES
+  =================================== */
+  
+  .article-content img {
+    @apply rounded-2xl shadow-2xl my-10 w-full;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .article-content img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .article-content figcaption {
+    @apply text-center text-sm text-gray-600 mt-4 italic font-crimson px-4;
+  }
+
+  /* ===================================
+     HR
+  =================================== */
+  
+  .article-content hr {
+    @apply my-16 border-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent;
+  }
+
+  /* ===================================
+     ANIMATION
+  =================================== */
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .article-content > * {
+    animation: fadeInUp 0.6s ease-out;
+  }
+</style>

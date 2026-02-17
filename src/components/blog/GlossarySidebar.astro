@@ -1,0 +1,110 @@
+---
+interface GlossaryTerm {
+  term: string;
+  definition: string;
+}
+
+interface Props {
+  terms: GlossaryTerm[];
+  maxPreview?: number;
+}
+
+const { terms, maxPreview = 3 } = Astro.props;
+const previewTerms = terms.slice(0, maxPreview);
+---
+
+{terms.length > 0 && (
+  <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+    <!-- Header -->
+    <div class="p-6 border-b border-gray-100">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy-900 font-crimson">
+            Glossaire
+          </h3>
+        </div>
+        <button 
+          id="glossary-toggle"
+          class="text-gray-500 hover:text-emerald-600 transition-colors p-1 rounded-lg hover:bg-emerald-50"
+          aria-label="Afficher/Masquer le glossaire"
+        >
+          <svg class="w-5 h-5 transform transition-transform duration-300" id="glossary-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Content collapsible -->
+    <div id="glossary-content" class="glossary-collapsed">
+      <div class="p-6 space-y-4">
+        {previewTerms.map((item) => (
+          <div class="pb-4 border-b border-gray-100 last:border-0 last:pb-0">
+            <dt class="text-sm font-bold text-navy-900 font-crimson mb-2 flex items-start">
+              <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
+              {item.term}
+            </dt>
+            <dd class="text-sm text-gray-600 font-crimson leading-relaxed ml-3.5">
+              {item.definition}
+            </dd>
+          </div>
+        ))}
+        
+        {terms.length > maxPreview && (
+          <div class="pt-3 border-t border-gray-100">
+            <a 
+              href="#glossaire-complet" 
+              class="text-sm text-emerald-600 hover:text-emerald-700 font-medium flex items-center group"
+            >
+              <span>Voir le glossaire complet ({terms.length} termes)</span>
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('glossary-toggle');
+    const content = document.getElementById('glossary-content');
+    const icon = document.getElementById('glossary-icon');
+    
+    if (toggleBtn && content && icon) {
+      toggleBtn.addEventListener('click', () => {
+        content.classList.toggle('glossary-collapsed');
+        icon.classList.toggle('rotate-180');
+      });
+    }
+  });
+</script>
+
+<style>
+  .glossary-collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .glossary-collapsed:not(.glossary-collapsed) {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+  }
+  
+  #glossary-content:not(.glossary-collapsed) {
+    max-height: 1000px;
+  }
+  
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+</style>

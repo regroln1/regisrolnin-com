@@ -1,19 +1,29 @@
+# robots.txt - regisrolnin.com
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://regisrolnin.com/sitemap-index.xml
-
-# Disallow admin areas
+# Block technical or private areas (only if they exist)
 Disallow: /admin/
-Disallow: /.well-known/
+Disallow: /api/
+Disallow: /drafts/
+Disallow: /preview/
+Disallow: /private/
+Disallow: /tmp/
 
-# Allow important pages
-Allow: /blog/
-Allow: /ressources/
-Allow: /methode-aia
-Allow: /a-propos
-Allow: /travailler-avec-moi
+# Prevent indexation of URL parameters (SEO hygiene)
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?sessionid=*
 
-# Crawl delay (optional)
-Crawl-delay: 1
+# Security: block sensitive file types
+Disallow: /*.log$
+Disallow: /*.bak$
+Disallow: /*.zip$
+Disallow: /*.env$
+
+# Crawl rules
+Crawl-delay: 2
+
+# Sitemap reference
+Sitemap: https://regisrolnin.com/sitemap-index.xml
+Host: regisrolnin.com

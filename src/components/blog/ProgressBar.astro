@@ -1,0 +1,27 @@
+<div id="reading-progress" class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+  <div class="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 ease-out" style="width: 0%"></div>
+</div>
+
+<script>
+  function updateReadingProgress() {
+    const article = document.querySelector('article');
+    const progressBar = document.querySelector('#reading-progress div');
+    
+    if (!article || !progressBar || !(progressBar instanceof HTMLElement)) return;
+    
+    const articleTop = article.offsetTop;
+    const articleHeight = article.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const scrollTop = window.scrollY;
+    
+    const progress = Math.min(
+      Math.max((scrollTop - articleTop + windowHeight * 0.3) / articleHeight, 0),
+      1
+    );
+    
+    progressBar.style.width = `${progress * 100}%`;
+  }
+  
+  window.addEventListener('scroll', updateReadingProgress);
+  document.addEventListener('DOMContentLoaded', updateReadingProgress);
+</script>
