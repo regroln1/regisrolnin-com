@@ -1,0 +1,52 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  width?: number;
+  height?: number;
+}
+
+const { src, alt, caption, credit, width, height } = Astro.props;
+---
+
+<figure class="my-10 animate-fade-in-up">
+  <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
+    <img 
+      src={src} 
+      alt={alt}
+      width={width}
+      height={height}
+      class="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+    />
+    {credit && (
+      <div class="absolute bottom-0 right-0 bg-black/60 text-white text-xs px-3 py-1.5 rounded-tl-lg backdrop-blur-sm">
+        Photo: {credit}
+      </div>
+    )}
+  </div>
+  {caption && (
+    <figcaption class="text-center text-sm text-gray-600 mt-4 italic font-crimson px-4">
+      {caption}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+</style>

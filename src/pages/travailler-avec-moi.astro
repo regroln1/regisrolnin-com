@@ -52,7 +52,7 @@ const faqs = [
 ---
 
 <Layout 
-  title="Appel stratégique 30 min – Régis Rolnin | Croissance PME"
+  title="Session Stratégique Gratuite – Régis Rolnin | Consultant en Croissance Digitale & Automatisation"
   description="Un appel de 30 minutes pour clarifier vos priorités, éviter les erreurs coûteuses et voir si nous pouvons travailler ensemble."
   type="website"
 >
@@ -96,6 +96,11 @@ const faqs = [
                 la croissance de votre entreprise.
               </span>
             </h1>
+
+            <h2 class="sr-only">
+            Session stratégique gratuite avec Régis Rolnin, consultant en croissance digitale et automatisation.
+            </h2>
+
             <p class="text-xl text-gray-700 mb-8 max-w-2xl">
               Vous clarifiez vos priorités, évitez les erreurs coûteuses et découvrez si cette approche vous correspond.
             </p>
@@ -233,15 +238,35 @@ const faqs = [
               </div>
             </div>
 
-            <!-- Formulaire SuiteDash centré -->
-            <div class="max-w-2xl mx-auto">
+            <div class="hidden md:block max-w-2xl mx-auto">
               <SuiteDashForm
                 formUrl="https://acces.regisrolnin.com/frm/22X7MK87WJQxTnzyz"
-                height="1700px"
+                height="2000px"
                 trustText="🔒 Confidentialité absolue – Vos données sont sécurisées"
                 loadingText="Chargement des disponibilités..."
                 containerClass="bg-transparent p-0"
               />
+            </div>
+            
+            <div class="md:hidden max-w-2xl mx-auto">
+              <div class="p-6 bg-blue-50 rounded-xl border border-blue-200">
+                <p class="text-lg font-bold text-navy-900 mb-4">
+                    Passez à la réservation en plein écran pour mobile.
+                </p>
+                <a 
+                    href="https://acces.regisrolnin.com/frm/22X7MK87WJQxTnzyz" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-xl transition-all text-center"
+                >
+                    Continuer la réservation (Plein écran) 
+                    <svg class="w-4 h-4 inline-block ml-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-7-3l-4-4m0 0l-4 4m4-4v11"></path></svg>
+                </a>
+              </div>
+               {/* Affichage du texte de confiance même en mobile */}
+               <p class="trust-text text-sm text-gray-500 text-center mt-4">
+                  🔒 Confidentialité absolue – Vos données sont sécurisées
+               </p>
             </div>
           </div>
         </div>
