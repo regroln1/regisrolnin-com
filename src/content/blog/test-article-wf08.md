@@ -1,6 +1,6 @@
 ---
 title: "Test Article WF08 - Ne pas publier"
-description: "Article de test pour valider le workflow WF08 de publication automatisée via n8n GitHub Netlify"
+description: "Article de test pour valider le workflow WF08 de publication automatisée via n8n GitHub Netlify. Ce pipeline permet de gérer l'ensemble du cycle de vie des articles de blog de manière automatisée et sécurisée avec validation humaine entre chaque étape."
 pubDate: 2026-02-17
 author: "Régis Rolnin"
 authorBio: "Consultant en stratégie, croissance digitale et automatisation pour PME."
@@ -10,7 +10,7 @@ authorSocial:
   twitter: "https://twitter.com/regisrolnin"
   website: "https://regisrolnin.com"
 tags: ["test","wf08"]
-category: "test"
+category: "guides"
 image: "/images/blog/test-article-wf08.jpg"
 excerpt: "Ceci est un article de test pour valider le pipeline de publication automatisé WF08."
 draft: false
