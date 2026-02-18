@@ -9,7 +9,7 @@ authorSocial:
   linkedin: "https://linkedin.com/in/regis-rolnin"
   twitter: "https://twitter.com/regisrolnin"
   website: "https://regisrolnin.com"
-tags: []
+tags: ["automatisation", "pme", "no-code", "productivite"]
 category: "automatisation"
 image: "/images/blog/automatisation-pme-guide-complet.jpg"
 excerpt: "Guide pratique pour automatiser les processus de votre PME avec des outils accessibles et mesurer rapidement le retour sur investissement."
