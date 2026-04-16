@@ -1,0 +1,147 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Récupérer tous les articles publiés
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+
+// Extraire et dédupliquer tous les termes de glossaire
+const allTermsMap = new Map();
+
+posts.forEach((post) => {
+  const glossary = post.data.glossary ?? [];
+  glossary.forEach((item) => {
+    const key = item.term.toLowerCase().trim();
+    if (allTermsMap.has(key)) {
+      const existing = allTermsMap.get(key);
+      if (!existing.articles.find((a) => a.slug === post.slug)) {
+        existing.articles.push({ title: post.data.title, slug: post.slug });
+      }
+    } else {
+      allTermsMap.set(key, {
+        term: item.term,
+        definition: item.definition,
+        articles: [{ title: post.data.title, slug: post.slug }],
+      });
+    }
+  });
+});
+
+// Trier alphabétiquement
+const allTerms = Array.from(allTermsMap.values()).sort((a, b) =>
+  a.term.localeCompare(b.term, 'fr', { sensitivity: 'base' })
+);
+
+// Grouper par lettre initiale
+const grouped = new Map();
+allTerms.forEach((item) => {
+  const letter = item.term.charAt(0).toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  if (!grouped.has(letter)) {
+    grouped.set(letter, []);
+  }
+  grouped.get(letter).push(item);
+});
+
+const letters = Array.from(grouped.keys()).sort((a, b) => a.localeCompare(b, 'fr'));
+---
+
+<Layout
+  title="Glossaire — Régis Rolnin | Consultant en Stratégie, Croissance Digitale & Automatisation"
+  description="Retrouvez tous les termes clés utilisés dans nos articles : stratégie digitale, automatisation, IA, SEO, CRM et plus encore."
+>
+  <Header />
+
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-emerald-50">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold text-navy-900 font-crimson mb-4">
+            Glossaire
+          </h1>
+          <p class="text-lg text-gray-600 font-crimson max-w-2xl mx-auto">
+            Tous les termes clés utilisés dans nos articles, expliqués simplement.
+            {allTerms.length} termes répartis dans {posts.length} articles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation alphabétique -->
+    <section class="py-6 bg-white border-b border-gray-100 sticky top-20 z-20">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
+          {letters.map((letter) => {
+            const href = `#letter-${letter}`;
+            return (
+              <a
+                href={href}
+                class="w-10 h-10 flex items-center justify-center rounded-lg text-sm font-bold text-navy-900 hover:bg-emerald-50 hover:text-emerald-700 transition-colors border border-gray-200 hover:border-emerald-300"
+              >
+                {letter}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Termes -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto space-y-12">
+          {letters.map((letter) => {
+            const id = `letter-${letter}`;
+            const items = grouped.get(letter);
+            return (
+              <div id={id} class="scroll-mt-40">
+                <div class="flex items-center mb-6">
+                  <span class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center text-white font-bold text-xl font-crimson mr-4">
+                    {letter}
+                  </span>
+                  <div class="flex-1 h-px bg-gray-200"></div>
+                </div>
+
+                <div class="space-y-4">
+                  {items.map((item) => (
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-emerald-50 transition-colors border border-gray-100 hover:border-emerald-200">
+                      <dt class="text-lg font-bold text-navy-900 font-crimson mb-2 flex items-start">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                        {item.term}
+                      </dt>
+                      <dd class="text-gray-600 font-crimson leading-relaxed ml-5 mb-3">
+                        {item.definition}
+                      </dd>
+                      <div class="ml-5 flex flex-wrap gap-2">
+                        {item.articles.map((article) => {
+                          const articleHref = `/blog/${article.slug}`;
+                          return (
+                            <a
+                              href={articleHref}
+                              class="text-xs text-emerald-600 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1 rounded-full transition-colors font-medium"
+                            >
+                              {article.title}
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
