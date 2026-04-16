@@ -16,7 +16,7 @@ posts.forEach((post) => {
     const key = item.term.toLowerCase().trim();
     if (allTermsMap.has(key)) {
       const existing = allTermsMap.get(key);
-      if (!existing.articles.find((a) => a.slug === post.slug)) {
+      if (!existing.articles.find((a: any) => a.slug === post.slug)) {
         existing.articles.push({ title: post.data.title, slug: post.slug });
       }
     } else {
@@ -110,7 +110,7 @@ const letters = Array.from(grouped.keys()).sort((a, b) => a.localeCompare(b, 'fr
                 </div>
 
                 <div class="space-y-4">
-                  {items.map((item) => (
+                  {items.map((item: any) => (
                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-emerald-50 transition-colors border border-gray-100 hover:border-emerald-200">
                       <dt class="text-lg font-bold text-navy-900 font-crimson mb-2 flex items-start">
                         <span class="w-2 h-2 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
@@ -120,7 +120,7 @@ const letters = Array.from(grouped.keys()).sort((a, b) => a.localeCompare(b, 'fr
                         {item.definition}
                       </dd>
                       <div class="ml-5 flex flex-wrap gap-2">
-                        {item.articles.map((article) => {
+                        {item.articles.map((article: any) => {
                           const articleHref = `/blog/${article.slug}`;
                           return (
                             <a
